@@ -1,0 +1,935 @@
+{
+  "type": "carousel",
+  "contents": [
+    {
+      "type": "bubble",
+      "size": "kilo",
+      "hero": {
+        "type": "image",
+        "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png",
+        "size": "full",
+        "aspectRatio": "20:13",
+        "aspectMode": "cover"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "好味小姐",
+            "weight": "bold",
+            "size": "lg"
+          },
+          {
+            "type": "text",
+            "text": "雞肉",
+            "size": "lg"
+          },
+          {
+            "type": "separator",
+            "margin": "md"
+          },
+          {
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+              {
+                "type": "text",
+                "text": "主食罐",
+                "color": "#aaaaaa",
+                "size": "sm",
+                "flex": 1,
+                "weight": "bold"
+              },
+              {
+                "type": "text",
+                "text": "-幼母貓罐",
+                "color": "#aaaaaa",
+                "size": "sm",
+                "flex": 3,
+                "weight": "regular"
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "color": "#aaaaaa",
+                "size": "sm",
+                "flex": 2,
+                "weight": "bold",
+                "text": " "
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": "符合  AAFCO 主食罐標準",
+                "size": "xxs",
+                "color": "#aaaaaa"
+              }
+            ]
+          },
+          {
+            "type": "separator",
+            "margin": "md"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": "營養成分分析:",
+                "size": "xxs"
+              },
+              {
+                "type": "box",
+                "layout": "baseline",
+                "spacing": "xs",
+                "contents": [
+                  {
+                    "type": "icon",
+                    "url": "https://raw.githubusercontent.com/eirikmadland/notion-icons/master/v5/icon1/ul-check-circle.svg",
+                    "offsetStart": "xs",
+                    "offsetTop": "xs"
+                  },
+                  {
+                    "type": "text",
+                    "text": "蛋白",
+                    "color": "#ffffff",
+                    "size": "sm",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "30~50%",
+                    "wrap": true,
+                    "color": "#ffffff",
+                    "size": "sm",
+                    "align": "center"
+                  }
+                ],
+                "backgroundColor": "#98D98E",
+                "cornerRadius": "lg",
+                "position": "relative",
+                "margin": "sm",
+                "width": "50%",
+                "justifyContent": "flex-start"
+              },
+              {
+                "type": "box",
+                "layout": "baseline",
+                "spacing": "xs",
+                "contents": [
+                  {
+                    "type": "icon",
+                    "url": "https://raw.githubusercontent.com/eirikmadland/notion-icons/master/v5/icon1/ul-check-circle.svg",
+                    "offsetStart": "xs",
+                    "offsetTop": "xs"
+                  },
+                  {
+                    "type": "text",
+                    "text": "脂肪",
+                    "color": "#ffffff",
+                    "size": "sm",
+                    "decoration": "none",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "  50~65%",
+                    "wrap": false,
+                    "color": "#ffffff",
+                    "size": "sm",
+                    "align": "center"
+                  }
+                ],
+                "backgroundColor": "#98D98E",
+                "cornerRadius": "lg",
+                "position": "relative",
+                "margin": "sm",
+                "width": "50%"
+              },
+              {
+                "type": "box",
+                "layout": "baseline",
+                "spacing": "xs",
+                "contents": [
+                  {
+                    "type": "icon",
+                    "url": "https://raw.githubusercontent.com/eirikmadland/notion-icons/master/v5/icon1/ul-check-circle.svg",
+                    "offsetStart": "xs",
+                    "offsetTop": "xs"
+                  },
+                  {
+                    "type": "text",
+                    "text": "碳水",
+                    "color": "#ffffff",
+                    "size": "sm",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "10% ↓",
+                    "wrap": false,
+                    "color": "#ffffff",
+                    "size": "sm",
+                    "align": "center"
+                  }
+                ],
+                "backgroundColor": "#98D98E",
+                "cornerRadius": "lg",
+                "position": "relative",
+                "margin": "sm",
+                "width": "50%"
+              },
+              {
+                "type": "box",
+                "layout": "baseline",
+                "spacing": "xs",
+                "contents": [
+                  {
+                    "type": "icon",
+                    "url": "https://raw.githubusercontent.com/eirikmadland/notion-icons/master/v5/icon1/ul-check-circle.svg",
+                    "offsetStart": "xs",
+                    "offsetTop": "xs"
+                  },
+                  {
+                    "type": "text",
+                    "text": "鈣磷比",
+                    "color": "#ffffff",
+                    "size": "sm",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "1.1~1.6",
+                    "size": "sm",
+                    "color": "#ffffff",
+                    "align": "center"
+                  }
+                ],
+                "backgroundColor": "#98D98E",
+                "cornerRadius": "lg",
+                "position": "relative",
+                "margin": "sm",
+                "alignItems": "center",
+                "width": "50%"
+              },
+              {
+                "type": "box",
+                "layout": "baseline",
+                "spacing": "xs",
+                "contents": [
+                  {
+                    "type": "icon",
+                    "url": "https://raw.githubusercontent.com/eirikmadland/notion-icons/master/v5/icon1/ul-check-circle.svg",
+                    "offsetStart": "xs",
+                    "offsetTop": "xs"
+                  },
+                  {
+                    "type": "text",
+                    "text": "磷含量",
+                    "color": "#ffffff",
+                    "size": "sm",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "(腎貓處方)",
+                    "color": "#ffffff",
+                    "size": "xxs",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "80~135mg/kcal",
+                    "size": "sm",
+                    "color": "#ffffff",
+                    "align": "center"
+                  }
+                ],
+                "backgroundColor": "#98D98E",
+                "cornerRadius": "lg",
+                "position": "relative",
+                "margin": "sm",
+                "alignItems": "center"
+              }
+            ]
+          },
+          {
+            "type": "separator",
+            "margin": "md"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": "敏感成分分析:",
+                "size": "xxs"
+              },
+              {
+                "type": "box",
+                "layout": "baseline",
+                "contents": [
+                  {
+                    "type": "icon",
+                    "url": "https://api.iconify.design/jam:alert.svg?color=%23ffffff",
+                    "offsetStart": "xs",
+                    "offsetTop": "xs"
+                  },
+                  {
+                    "type": "text",
+                    "color": "#ffffff",
+                    "size": "sm",
+                    "contents": [
+                      {
+                        "type": "span",
+                        "text": "卡拉膠、刺槐豆、決明子"
+                      }
+                    ],
+                    "wrap": true
+                  }
+                ],
+                "backgroundColor": "#aaaaaa",
+                "cornerRadius": "xs",
+                "position": "relative",
+                "spacing": "xs",
+                "margin": "sm"
+              }
+            ]
+          }
+        ]
+      },
+      "styles": {
+        "footer": {
+          "separator": false,
+          "backgroundColor": "#aaaaaa"
+        }
+      }
+    },
+    {
+      "type": "bubble",
+      "size": "kilo",
+      "hero": {
+        "type": "image",
+        "size": "full",
+        "aspectRatio": "20:13",
+        "aspectMode": "cover",
+        "url": "https://scdn.line-apps.com/n/channel_devcenter/img/flexsnapshot/clip/clip11.jpg"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "品牌名稱",
+            "weight": "bold",
+            "size": "lg"
+          },
+          {
+            "type": "text",
+            "text": "系列 / 口味",
+            "size": "lg"
+          },
+          {
+            "type": "separator",
+            "margin": "md"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": " (主食罐 / 副食罐 / 湯罐)",
+                "color": "#aaaaaa",
+                "size": "sm",
+                "flex": 2,
+                "weight": "bold"
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": "tags(幼母貓罐, 低磷罐, 高齡營養罐...)",
+                "color": "#aaaaaa",
+                "size": "sm",
+                "flex": 2,
+                "weight": "bold"
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": "(空白) / 符合  AAFCO 主食罐標準",
+                "size": "xxs",
+                "color": "#aaaaaa"
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": "營養成分分析:",
+                "size": "xxs"
+              },
+              {
+                "type": "box",
+                "layout": "baseline",
+                "spacing": "xs",
+                "contents": [
+                  {
+                    "type": "icon",
+                    "url": "https://raw.githubusercontent.com/eirikmadland/notion-icons/master/v5/icon1/ul-check-circle.svg",
+                    "offsetStart": "xs",
+                    "offsetTop": "xs"
+                  },
+                  {
+                    "type": "text",
+                    "text": "蛋白",
+                    "color": "#ffffff",
+                    "size": "sm",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "30~50%",
+                    "wrap": true,
+                    "color": "#ffffff",
+                    "size": "sm",
+                    "align": "center"
+                  }
+                ],
+                "backgroundColor": "#98D98E",
+                "cornerRadius": "lg",
+                "position": "relative",
+                "margin": "sm",
+                "width": "50%",
+                "justifyContent": "flex-start"
+              },
+              {
+                "type": "box",
+                "layout": "baseline",
+                "spacing": "xs",
+                "contents": [
+                  {
+                    "type": "icon",
+                    "url": "https://raw.githubusercontent.com/eirikmadland/notion-icons/master/v5/icon1/ul-check-circle.svg",
+                    "offsetStart": "xs",
+                    "offsetTop": "xs"
+                  },
+                  {
+                    "type": "text",
+                    "text": "脂肪",
+                    "color": "#ffffff",
+                    "size": "sm",
+                    "decoration": "none",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "  50~65%",
+                    "wrap": false,
+                    "color": "#ffffff",
+                    "size": "sm",
+                    "align": "center"
+                  }
+                ],
+                "backgroundColor": "#98D98E",
+                "cornerRadius": "lg",
+                "position": "relative",
+                "margin": "sm",
+                "width": "50%"
+              },
+              {
+                "type": "box",
+                "layout": "baseline",
+                "spacing": "xs",
+                "contents": [
+                  {
+                    "type": "icon",
+                    "url": "https://raw.githubusercontent.com/eirikmadland/notion-icons/master/v5/icon1/ul-check-circle.svg",
+                    "offsetStart": "xs",
+                    "offsetTop": "xs"
+                  },
+                  {
+                    "type": "text",
+                    "text": "碳水",
+                    "color": "#ffffff",
+                    "size": "sm",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "10% ↓",
+                    "wrap": false,
+                    "color": "#ffffff",
+                    "size": "sm",
+                    "align": "center"
+                  }
+                ],
+                "backgroundColor": "#98D98E",
+                "cornerRadius": "lg",
+                "position": "relative",
+                "margin": "sm",
+                "width": "50%"
+              },
+              {
+                "type": "box",
+                "layout": "baseline",
+                "spacing": "xs",
+                "contents": [
+                  {
+                    "type": "icon",
+                    "url": "https://raw.githubusercontent.com/eirikmadland/notion-icons/master/v5/icon1/ul-check-circle.svg",
+                    "offsetStart": "xs",
+                    "offsetTop": "xs"
+                  },
+                  {
+                    "type": "text",
+                    "text": "鈣磷比",
+                    "color": "#ffffff",
+                    "size": "sm",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "1.1~1.6",
+                    "size": "sm",
+                    "color": "#ffffff",
+                    "align": "center"
+                  }
+                ],
+                "backgroundColor": "#98D98E",
+                "cornerRadius": "lg",
+                "position": "relative",
+                "margin": "sm",
+                "alignItems": "center",
+                "width": "50%"
+              },
+              {
+                "type": "box",
+                "layout": "baseline",
+                "spacing": "xs",
+                "contents": [
+                  {
+                    "type": "icon",
+                    "url": "https://raw.githubusercontent.com/eirikmadland/notion-icons/master/v5/icon1/ul-check-circle.svg",
+                    "offsetStart": "xs",
+                    "offsetTop": "xs"
+                  },
+                  {
+                    "type": "text",
+                    "text": "磷含量",
+                    "color": "#ffffff",
+                    "size": "sm",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "(一般貓貓)",
+                    "color": "#ffffff",
+                    "size": "xxs",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "125~350mg/kcal",
+                    "size": "sm",
+                    "color": "#ffffff",
+                    "align": "center"
+                  }
+                ],
+                "backgroundColor": "#98D98E",
+                "cornerRadius": "lg",
+                "position": "relative",
+                "margin": "sm",
+                "alignItems": "center"
+              }
+            ]
+          },
+          {
+            "type": "separator",
+            "margin": "md"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": "敏感成分分析:",
+                "size": "xxs"
+              },
+              {
+                "type": "box",
+                "layout": "baseline",
+                "contents": [
+                  {
+                    "type": "icon",
+                    "url": "https://api.iconify.design/jam:alert.svg?color=%23ffffff",
+                    "offsetStart": "xs",
+                    "offsetTop": "xs"
+                  },
+                  {
+                    "type": "text",
+                    "color": "#ffffff",
+                    "size": "sm",
+                    "contents": [
+                      {
+                        "type": "span",
+                        "text": "卡拉膠、刺槐豆、決明子"
+                      }
+                    ],
+                    "wrap": true
+                  }
+                ],
+                "backgroundColor": "#aaaaaa",
+                "cornerRadius": "xs",
+                "position": "relative",
+                "spacing": "xs",
+                "margin": "sm"
+              }
+            ]
+          }
+        ]
+      },
+      "styles": {
+        "footer": {
+          "backgroundColor": "#aaaaaa",
+          "separator": false
+        }
+      }
+    },
+    {
+      "type": "bubble",
+      "size": "kilo",
+      "hero": {
+        "type": "image",
+        "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png",
+        "size": "full",
+        "aspectRatio": "20:13",
+        "aspectMode": "cover"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "好味小姐",
+            "weight": "bold",
+            "size": "lg"
+          },
+          {
+            "type": "text",
+            "text": "雞肉",
+            "size": "lg"
+          },
+          {
+            "type": "separator",
+            "margin": "md"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": "主食罐",
+                "color": "#aaaaaa",
+                "size": "sm",
+                "flex": 2,
+                "weight": "bold"
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": "幼母貓罐",
+                "color": "#aaaaaa",
+                "size": "sm",
+                "flex": 2,
+                "weight": "bold"
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": "符合  AAFCO 主食罐標準",
+                "size": "xxs",
+                "color": "#aaaaaa"
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": "營養成分分析:",
+                "size": "xxs"
+              },
+              {
+                "type": "box",
+                "layout": "baseline",
+                "spacing": "xs",
+                "contents": [
+                  {
+                    "type": "icon",
+                    "url": "https://raw.githubusercontent.com/eirikmadland/notion-icons/master/v5/icon1/ul-check-circle.svg",
+                    "offsetStart": "xs",
+                    "offsetTop": "xs"
+                  },
+                  {
+                    "type": "text",
+                    "text": "蛋白",
+                    "color": "#ffffff",
+                    "size": "sm",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "30~50%",
+                    "wrap": true,
+                    "color": "#ffffff",
+                    "size": "sm",
+                    "align": "center"
+                  }
+                ],
+                "backgroundColor": "#98D98E",
+                "cornerRadius": "lg",
+                "position": "relative",
+                "margin": "sm",
+                "width": "50%",
+                "justifyContent": "flex-start"
+              },
+              {
+                "type": "box",
+                "layout": "baseline",
+                "spacing": "xs",
+                "contents": [
+                  {
+                    "type": "icon",
+                    "url": "https://raw.githubusercontent.com/eirikmadland/notion-icons/master/v5/icon1/ul-check-circle.svg",
+                    "offsetStart": "xs",
+                    "offsetTop": "xs"
+                  },
+                  {
+                    "type": "text",
+                    "text": "脂肪",
+                    "color": "#ffffff",
+                    "size": "sm",
+                    "decoration": "none",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "  50~65%",
+                    "wrap": false,
+                    "color": "#ffffff",
+                    "size": "sm",
+                    "align": "center"
+                  }
+                ],
+                "backgroundColor": "#98D98E",
+                "cornerRadius": "lg",
+                "position": "relative",
+                "margin": "sm",
+                "width": "50%"
+              },
+              {
+                "type": "box",
+                "layout": "baseline",
+                "spacing": "xs",
+                "contents": [
+                  {
+                    "type": "icon",
+                    "url": "https://raw.githubusercontent.com/eirikmadland/notion-icons/master/v5/icon1/ul-check-circle.svg",
+                    "offsetStart": "xs",
+                    "offsetTop": "xs"
+                  },
+                  {
+                    "type": "text",
+                    "text": "碳水",
+                    "color": "#ffffff",
+                    "size": "sm",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "10% ↓",
+                    "wrap": false,
+                    "color": "#ffffff",
+                    "size": "sm",
+                    "align": "center"
+                  }
+                ],
+                "backgroundColor": "#98D98E",
+                "cornerRadius": "lg",
+                "position": "relative",
+                "margin": "sm",
+                "width": "50%"
+              },
+              {
+                "type": "box",
+                "layout": "baseline",
+                "spacing": "xs",
+                "contents": [
+                  {
+                    "type": "icon",
+                    "url": "https://raw.githubusercontent.com/eirikmadland/notion-icons/master/v5/icon1/ul-check-circle.svg",
+                    "offsetStart": "xs",
+                    "offsetTop": "xs"
+                  },
+                  {
+                    "type": "text",
+                    "text": "鈣磷比",
+                    "color": "#ffffff",
+                    "size": "sm",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "1.1~1.6",
+                    "size": "sm",
+                    "color": "#ffffff",
+                    "align": "center"
+                  }
+                ],
+                "backgroundColor": "#98D98E",
+                "cornerRadius": "lg",
+                "position": "relative",
+                "margin": "sm",
+                "alignItems": "center",
+                "width": "50%"
+              },
+              {
+                "type": "box",
+                "layout": "baseline",
+                "spacing": "xs",
+                "contents": [
+                  {
+                    "type": "icon",
+                    "url": "https://raw.githubusercontent.com/eirikmadland/notion-icons/master/v5/icon1/ul-check-circle.svg",
+                    "offsetStart": "xs",
+                    "offsetTop": "xs"
+                  },
+                  {
+                    "type": "text",
+                    "text": "磷含量",
+                    "color": "#ffffff",
+                    "size": "sm",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "(腎貓處方)",
+                    "color": "#ffffff",
+                    "size": "xxs",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "80~135mg/kcal",
+                    "size": "sm",
+                    "color": "#ffffff",
+                    "align": "center"
+                  }
+                ],
+                "backgroundColor": "#98D98E",
+                "cornerRadius": "lg",
+                "position": "relative",
+                "margin": "sm",
+                "alignItems": "center"
+              }
+            ]
+          },
+          {
+            "type": "separator",
+            "margin": "md"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": "敏感成分分析:",
+                "size": "xxs"
+              },
+              {
+                "type": "box",
+                "layout": "baseline",
+                "contents": [
+                  {
+                    "type": "icon",
+                    "url": "https://api.iconify.design/jam:alert.svg?color=%23ffffff",
+                    "offsetStart": "xs",
+                    "offsetTop": "xs"
+                  },
+                  {
+                    "type": "text",
+                    "color": "#ffffff",
+                    "size": "sm",
+                    "contents": [
+                      {
+                        "type": "span",
+                        "text": "卡拉膠、刺槐豆、決明子"
+                      }
+                    ],
+                    "wrap": true
+                  }
+                ],
+                "backgroundColor": "#aaaaaa",
+                "cornerRadius": "xs",
+                "position": "relative",
+                "spacing": "xs",
+                "margin": "sm"
+              }
+            ]
+          }
+        ]
+      },
+      "styles": {
+        "footer": {
+          "separator": false,
+          "backgroundColor": "#aaaaaa"
+        }
+      }
+    }
+  ]
+}
