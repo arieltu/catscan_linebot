@@ -66,9 +66,7 @@ def index():
             print()
             if events[0]["message"]["type"] == "text":
                 text = events[0]["message"]["text"]                
-                if text == "我的名字":
-                    payload["messages"] = [getNameEmojiMessage()]
-                elif text in canBrands:
+                if text in canBrands:
                 # elif text == "好味小姐":
                     brands = events[0]["message"]["text"]
                     payload["messages"] = [brandsDetail(brands)]        
@@ -81,17 +79,6 @@ def index():
                 elif text == "你好~ 我要做貓罐頭營養標示分析": 
                     payload["messages"] = [handleGetNutritionInfo(),exampleNuPhoto()]
 
-                elif text == "台北101":
-                    payload["messages"] = [getTaipei101ImageMessage(),
-                                           getTaipei101LocationMessage(),
-                                           getMRTVideoMessage()]
-                elif text == "今日確診人數":
-                    payload["messages"] = [
-                            {
-                                "type": "text",
-                                "text": getTodayCovid19Message()
-                            }
-                        ]
                 else:
                     payload["messages"] = [
                             {
@@ -106,39 +93,38 @@ def index():
 
                 replyMessage(payload)
             elif events[0]["message"]["type"] == "location":
-                title = events[0]["message"]["title"]
-                latitude = events[0]["message"]["latitude"]
-                longitude = events[0]["message"]["longitude"]
-                payload["messages"] = [getLocationConfirmMessage(title, latitude, longitude)]
+                payload["messages"] = "location"
+                # title = events[0]["message"]["title"]
+                # latitude = events[0]["message"]["latitude"]
+                # longitude = events[0]["message"]["longitude"]
+                # payload["messages"] = [getLocationConfirmMessage(title, latitude, longitude)]
                 replyMessage(payload)
         elif events[0]["type"] == "postback":
-            data = json.loads(events[0]["postback"]["data"])
+            # data = json.loads(events[0]["postback"]["data"])
             
-
-
-
-            if "params" in events[0]["postback"]:
-                reservedTime = events[0]["postback"]["params"]["datetime"].replace("T", " ")
-                payload["messages"] = [
-                        {
-                            "type": "text",
-                            "text": F"已完成預約於{reservedTime}的叫車服務"
-                        }
-                    ]
-                replyMessage(payload)
-            else:
-                data = json.loads(events[0]["postback"]["data"])
-                action = data["action"]
-                if action == "get_near":
-                    data["action"] = "get_detail"
-                    payload["messages"] = [getCarouselMessage(data)]
-                elif action == "get_detail":
-                    del data["action"]
-                    payload["messages"] = [getTaipei101ImageMessage(),
-                                           getTaipei101LocationMessage(),
-                                           getMRTVideoMessage(),
-                                           getCallCarMessage(data)]
-                replyMessage(payload)
+            # if "params" in events[0]["postback"]:
+            #     reservedTime = events[0]["postback"]["params"]["datetime"].replace("T", " ")
+            #     payload["messages"] = [
+            #             {
+            #                 "type": "text",
+            #                 "text": F"已完成預約於{reservedTime}的叫車服務"
+            #             }
+            #         ]
+            #     replyMessage(payload)
+            # else:
+                pass
+                # data = json.loads(events[0]["postback"]["data"])
+                # action = data["action"]
+                # if action == "get_near":
+                #     data["action"] = "get_detail"
+                #     payload["messages"] = [getCarouselMessage(data)]
+                # elif action == "get_detail":
+                #     del data["action"]
+                #     payload["messages"] = [getTaipei101ImageMessage(),
+                #                            getTaipei101LocationMessage(),
+                #                            getMRTVideoMessage(),
+                #                            getCallCarMessage(data)]
+                # replyMessage(payload)
     
     return 'OK'
 
