@@ -896,9 +896,9 @@ def brandsDetail(brands):
         "contents": bubbles_flex
     }
 
-    ## 確認 flex 問題
-    with open("./flex_ck/flex_check.json", "w") as f:
-        json.dump(bubbles_flex, f)
+    # ## 確認 flex 問題
+    # with open("./flex_ck/flex_check.json", "w") as f:
+    #     json.dump(bubbles_flex, f)
     
     
     # print(bubbles_flex)
