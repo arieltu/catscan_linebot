@@ -1,4 +1,6 @@
 line-bot-sdk
 flask
-tensorflow
+# tensorflow
 pillow
+requests
+numpy

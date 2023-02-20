@@ -5,10 +5,8 @@ from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
 
 from PIL import Image, ImageOps
-from tensorflow.keras.models import load_model
-# from tensorflow.lite import Interpreter
-import tensorflow as tf
-# from google.cloud import vision
+# from tensorflow.keras.models import load_model
+# import tensorflow as tf
 
 import numpy as np
 import io
@@ -37,10 +35,9 @@ end_point = config.get('line-bot', 'end_point')
 line_login_id = config.get('line-bot', 'line_login_id')
 line_login_secret = config.get('line-bot', 'line_login_secret')
 
-## model
-model = load_model(config.get('model', 'model_h5'))
-# interpreter = tf.lite.Interpreter(config.get('model', 'model_tf'))
-label = config.get('model', 'label_file')
+# ## model
+# model = load_model(config.get('model', 'model_h5'))
+# label = config.get('model', 'label_file')
 
 ## 請求 header
 HEADER = {
@@ -186,7 +183,7 @@ def image_message(message_id):
         b += chunk
     img = Image.open(io.BytesIO(b))
 
-    response = classify_brands(img)
+    # response = classify_brands(img)
     # allergen_analysis()
 
     message = {
@@ -195,33 +192,34 @@ def image_message(message_id):
     }
     return message
 def classify_brands(img):
-    # ## tflite 
-    # img = img.resize((224,224))
-    # img = np.array(img)
-    # interpreter.allocate_tensors()
+    pass
+    # # ## tflite 
+    # # img = img.resize((224,224))
+    # # img = np.array(img)
+    # # interpreter.allocate_tensors()
 
-    # input_details = interpreter.get_input_details()
-    # input_tensor = interpreter.tensor(input_details[0]['index'])()
+    # # input_details = interpreter.get_input_details()
+    # # input_tensor = interpreter.tensor(input_details[0]['index'])()
 
-    # input_tensor[:] = img
-    # interpreter.invoke()
+    # # input_tensor[:] = img
+    # # interpreter.invoke()
 
-    # output_details = interpreter.get_output_details()
-    # result = interpreter.get_tensor(output_details[0]['index'])
-    # gc.collect()
-    # tf.keras.backend.clear_session()
+    # # output_details = interpreter.get_output_details()
+    # # result = interpreter.get_tensor(output_details[0]['index'])
+    # # gc.collect()
+    # # tf.keras.backend.clear_session()
 
-    # return result
+    # # return result
     
-    ## h5
-    img = ImageOps.fit(img, model.input.shape[1:3])
-    prediction = model.predict(np.expand_dims(img, axis=0)/255.)
-    p = np.argmax(prediction)
-    with open(label, encoding='utf-8') as f:
-        # labels = f.read().split()
-        labels = f.readlines()
-    # print(labels[p])    
-    return labels[p] if 0 <= p < len(labels) else 'unknown'
+    # ## h5
+    # img = ImageOps.fit(img, model.input.shape[1:3])
+    # prediction = model.predict(np.expand_dims(img, axis=0)/255.)
+    # p = np.argmax(prediction)
+    # with open(label, encoding='utf-8') as f:
+    #     # labels = f.read().split()
+    #     labels = f.readlines()
+    # # print(labels[p])    
+    # return labels[p] if 0 <= p < len(labels) else 'unknown'
 
 def allergen_analysis():
 #     YOUR_SERVICE = './gcp/gcpai.json'
