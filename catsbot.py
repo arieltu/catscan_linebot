@@ -172,6 +172,7 @@ def image_message(message_id):
 
     # response = classify_brands(img)
     response = allergen_analysis()
+    print(response)
 
     message = {
         "type": "text",
@@ -180,21 +181,21 @@ def image_message(message_id):
     return message
 def classify_brands(img):
     pass
-    # # ## tflite 
-    # # img = img.resize((224,224))
-    # # img = np.array(img)
-    # # interpreter.allocate_tensors()
+    # ## tflite 
+    # img = img.resize((224,224))
+    # img = np.array(img)
+    # interpreter.allocate_tensors()
 
-    # # input_details = interpreter.get_input_details()
-    # # input_tensor = interpreter.tensor(input_details[0]['index'])()
+    # input_details = interpreter.get_input_details()
+    # input_tensor = interpreter.tensor(input_details[0]['index'])()
 
-    # # input_tensor[:] = img
-    # # interpreter.invoke()
+    # input_tensor[:] = img
+    # interpreter.invoke()
 
-    # # output_details = interpreter.get_output_details()
-    # # result = interpreter.get_tensor(output_details[0]['index'])
-    # # gc.collect()
-    # # tf.keras.backend.clear_session()
+    # output_details = interpreter.get_output_details()
+    # result = interpreter.get_tensor(output_details[0]['index'])
+    # gc.collect()
+    # tf.keras.backend.clear_session()
 
     # # return result
     
