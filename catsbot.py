@@ -7,6 +7,7 @@ from linebot.models import MessageEvent, TextMessage, TextSendMessage
 from PIL import Image, ImageOps
 # from tensorflow.keras.models import load_model
 # import tensorflow as tf
+from google.cloud import vision
 
 import numpy as np
 import io
@@ -184,7 +185,7 @@ def image_message(message_id):
     img = Image.open(io.BytesIO(b))
 
     # response = classify_brands(img)
-    # allergen_analysis()
+    response = allergen_analysis()
 
     message = {
         "type": "text",
@@ -222,39 +223,38 @@ def classify_brands(img):
     # return labels[p] if 0 <= p < len(labels) else 'unknown'
 
 def allergen_analysis():
-#     YOUR_SERVICE = './gcp/gcpai.json'
-#     os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = YOUR_SERVICE
-#     client = vision.ImageAnnotatorClient()
+    YOUR_SERVICE = './gcp/gcpai.json'
+    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = YOUR_SERVICE
+    client = vision.ImageAnnotatorClient()
 
-#     # one-shot upload
-#     YOUR_PIC = './gcp/image_test/2_K9_g_ab.jpg'
+    # one-shot upload
+    YOUR_PIC = './gcp/image_test/2_K9_g_ab.jpg'
 
-#     with open(YOUR_PIC, 'rb') as image_file:
-#         content = image_file.read()
-#     image = vision.Image(content=content)
+    with open(YOUR_PIC, 'rb') as image_file:
+        content = image_file.read()
+    image = vision.Image(content=content)
 
-#     response = client.document_text_detection(image=image)
-    
-#     im = Image.open(YOUR_PIC)
-#     get_list = []
+    response = client.document_text_detection(image=image)
+    texts = response.text_annotations
+    ans = texts[0].description.replace("\n", "")
+    print(ans)
 
-#     for text in response.text_annotations:
-#         get = text.description
-#         get_list.append(get)
-    
-#     print(get_list)
-#     #一次找多個敏感物質
-#     substrings = ["蕃薯", "甲苯醌", "豌豆", "天然香料",  "膠","亞麻籽" ]
+    substrings = ["蕃薯", "甲苯醌", "豌豆", "天然香料",  "膠","亞麻籽"]
+    alert_list = []
 
-#     found = [s for s in substrings if s in get_list]
-
-#     if found:
-#         print("發現敏感物質")
-#         for s in found:
-#             print(s)
-#     else:
-#         print("未發現敏感物質") 
-    pass
+    for s in substrings:
+        if s in ans:
+            # print(s)
+            alert_list.append(s)
+        else:
+            pass
+        
+    if len(alert_list) > 0:
+        # print("發現敏感物質", alert_list)
+        return "發現敏感物質:", alert_list        
+    else:
+        # print("未發現敏感物質")
+        return "未發現敏感物質"
 
 
 

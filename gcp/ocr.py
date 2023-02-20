@@ -1,23 +1,12 @@
 import os
-from google.cloud import vision, storage
-import matplotlib.pyplot as plt
+from google.cloud import vision
+# import matplotlib.pyplot as plt
 from PIL import Image
 
 
 YOUR_SERVICE = 'gcpai.json'
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = YOUR_SERVICE
 client = vision.ImageAnnotatorClient()
-
-# # 將輸入照片儲存到GCS
-# YOUR_BUCKET = 'alexwu0209'
-# YOUR_PIC = '1_Ziwi Peak _a(1).jpg'
-
-# storage_client = storage.Client()
-# bucket = storage_client.bucket(YOUR_BUCKET)
-# bucket.blob(YOUR_PIC).upload_from_filename(YOUR_PIC)
-# image_uri = f'gs://{YOUR_BUCKET}/{YOUR_PIC}'
-# source = vision.ImageSource(image_uri=image_uri)
-# image = vision.Image(source=source)
 
 # one-shot upload
 YOUR_PIC = './image_test/2_K9_g_ab.jpg'
@@ -27,6 +16,11 @@ with open(YOUR_PIC, 'rb') as image_file:
 image = vision.Image(content=content)
 
 response = client.document_text_detection(image=image)
+texts = response.text_annotations
+# print(texts[0].description)
+ans = texts[0].description.replace("\n", "")
+print(ans)
+
 # im = Image.open(YOUR_PIC)
 # plt.imshow(im)
 
@@ -39,25 +33,41 @@ response = client.document_text_detection(image=image)
 
 # plt.show()
 
-im = Image.open(YOUR_PIC)
-get_list = []
+# im = Image.open(YOUR_PIC)
 # plt.imshow(im)
 
-for text in response.text_annotations:
-    # print(text.description)
-    get = text.description
-    get_list.append(get)
+# get_list = []
+# for text in response.text_annotations:
+#     # print(text.description)
+#     get = text.description
+#     # print(get)
+#     get_list.append(get)
 
 # print(text.description)
-print(get_list)
+# print(get_list)
 #一次找多個敏感物質
 substrings = ["蕃薯", "甲苯醌", "豌豆", "天然香料",  "膠","亞麻籽"]
 
-found = [s for s in substrings if s in get_list]
+# found = [s for s in substrings if s in get_list]
 
-if found:
-    print("發現敏感物質")
-    for s in found:
-        print(s)
+# if found:
+#     for s in found:
+#         print(s)
+#         found_list.append(s)
+#     print("發現敏感物質",found_list)
+# else:
+#     print("未發現敏感物質") 
+
+alert_list = []
+
+for s in substrings:
+    if s in ans:
+        # print(s)
+        alert_list.append(s)
+    else:
+        pass
+    
+if len(alert_list) > 0:
+    print("發現敏感物質", alert_list)
 else:
-    print("未發現敏感物質") 
+    print("未發現敏感物質")
