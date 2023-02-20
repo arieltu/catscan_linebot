@@ -46,7 +46,7 @@ print(ans)
 # print(text.description)
 # print(get_list)
 #一次找多個敏感物質
-substrings = ["蕃薯", "甲苯醌", "豌豆", "天然香料",  "膠","亞麻籽"]
+substrings = ["蕃薯", "甲苯醌", "豌豆", "天然香料", "膠","亞麻籽"]
 
 # found = [s for s in substrings if s in get_list]
 
@@ -58,16 +58,19 @@ substrings = ["蕃薯", "甲苯醌", "豌豆", "天然香料",  "膠","亞麻籽
 # else:
 #     print("未發現敏感物質") 
 
-alert_list = []
+def allergen_analysis():
+    alert_list = []
 
-for s in substrings:
-    if s in ans:
-        # print(s)
-        alert_list.append(s)
-    else:
-        pass
+    for s in substrings:
+        if s in ans:
+            alert_list.append(s)
+        else:
+            pass
     
-if len(alert_list) > 0:
-    print("發現敏感物質", alert_list)
-else:
-    print("未發現敏感物質")
+    return '發現敏感物質' if len(alert_list) > 0 else '未發現敏感物質'
+    # return alert_list if len(alert_list) > 0 else '未發現敏感物質'
+    # return alert_list
+    
+response = allergen_analysis()
+print(response)
+print(type(response))

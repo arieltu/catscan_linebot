@@ -235,12 +235,7 @@ def allergen_analysis():
         else:
             pass
         
-    if len(alert_list) > 0:
-        # print("發現敏感物質", alert_list)
-        return "發現敏感物質:", alert_list        
-    else:
-        # print("未發現敏感物質")
-        return "未發現敏感物質"
+    return '發現敏感物質' if len(alert_list) > 0 else '未發現敏感物質'
 
 
 
