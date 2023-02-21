@@ -100,6 +100,7 @@ def index():
                 # payload["messages"] = [getLocationConfirmMessage(title, latitude, longitude)]
                 replyMessage(payload)
         elif events[0]["type"] == "postback":
+            pass
             # data = json.loads(events[0]["postback"]["data"])
             
             # if "params" in events[0]["postback"]:
@@ -112,7 +113,6 @@ def index():
             #         ]
             #     replyMessage(payload)
             # else:
-                pass
                 # data = json.loads(events[0]["postback"]["data"])
                 # action = data["action"]
                 # if action == "get_near":
@@ -171,7 +171,7 @@ def image_message(message_id):
     img = Image.open(io.BytesIO(b))
 
     # response = classify_brands(img)
-    response = allergen_analysis()
+    response = allergen_analysis(message_id)
     print(response)
 
     message = {
@@ -209,16 +209,17 @@ def classify_brands(img):
     # # print(labels[p])    
     # return labels[p] if 0 <= p < len(labels) else 'unknown'
 
-def allergen_analysis():
+def allergen_analysis(message_id):
     YOUR_SERVICE = './gcp/gcpai.json'
     os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = YOUR_SERVICE
     client = vision.ImageAnnotatorClient()
 
     # one-shot upload
-    YOUR_PIC = './gcp/image_test/2_K9_g_ab.jpg'
+    PIC = './user/image/' + message_id + '.jpg'
 
-    with open(YOUR_PIC, 'rb') as image_file:
+    with open(PIC, 'rb') as image_file:
         content = image_file.read()
+    
     image = vision.Image(content=content)
 
     response = client.document_text_detection(image=image)
@@ -226,7 +227,7 @@ def allergen_analysis():
     ans = texts[0].description.replace("\n", "")
     print(ans)
 
-    substrings = ["蕃薯", "甲苯醌", "豌豆", "天然香料",  "膠","亞麻籽"]
+    substrings = ["蕃薯", "甲苯醌", "豌豆", "天然香料","亞麻籽", "鹿角菜膠", "角叉菜膠", "瓜爾豆膠" , "關華豆膠", "黃原膠", "三仙膠", "玉米糖膠","K3" ]
     alert_list = []
 
     for s in substrings:
@@ -235,7 +236,7 @@ def allergen_analysis():
             alert_list.append(s)
         else:
             pass
-        
+    print(alert_list)    
     return '發現敏感物質' if len(alert_list) > 0 else '未發現敏感物質'
 
 
