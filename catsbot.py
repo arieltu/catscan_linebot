@@ -139,6 +139,7 @@ def image_message(message_id):
         b += chunk
     img = Image.open(io.BytesIO(b))
 
+    response = classify_brands(img)
     alert_list = allergen_analysis(message_id)
     
     if len(alert_list) > 0:
@@ -156,8 +157,7 @@ def image_message(message_id):
     }
     return message
 
-def classify_brands(img):
-    pass
+def classify_brands(img):    
     # ## tflite 
     # img = img.resize((224,224))
     # img = np.array(img)
@@ -176,45 +176,45 @@ def classify_brands(img):
 
     # # return result
     
-    # ## h5
-    # img = ImageOps.fit(img, model.input.shape[1:3])
-    # prediction = model.predict(np.expand_dims(img, axis=0)/255.)
-    # p = np.argmax(prediction)
-    # with open(label, encoding='utf-8') as f:
-    #     # labels = f.read().split()
-    #     labels = f.readlines()
-    # # print(labels[p])    
-    # return labels[p] if 0 <= p < len(labels) else 'unknown'
+    ## h5
+    img = ImageOps.fit(img, model.input.shape[1:3])
+    prediction = model.predict(np.expand_dims(img, axis=0)/255.)
+    p = np.argmax(prediction)
+    with open(label, encoding='utf-8') as f:
+        # labels = f.read().split()
+        labels = f.readlines()
+    # print(labels[p])    
+    return labels[p] if 0 <= p < len(labels) else 'unknown'
 
 def allergen_analysis(message_id):
-    YOUR_SERVICE = './gcp/gcpai.json'
-    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = YOUR_SERVICE
-    client = vision.ImageAnnotatorClient()
+    pass
+    # YOUR_SERVICE = './gcp/gcpai.json'
+    # os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = YOUR_SERVICE
+    # client = vision.ImageAnnotatorClient()
 
-    # one-shot upload
-    PIC = './user/image/' + message_id + '.jpg'
+    # # one-shot upload
+    # PIC = './user/image/' + message_id + '.jpg'
 
-    with open(PIC, 'rb') as image_file:
-        content = image_file.read()
+    # with open(PIC, 'rb') as image_file:
+    #     content = image_file.read()
     
-    image = vision.Image(content=content)
+    # image = vision.Image(content=content)
 
-    response = client.document_text_detection(image=image)
-    texts = response.text_annotations
-    ans = texts[0].description.replace("\n", "")
-    print(ans)
+    # response = client.document_text_detection(image=image)
+    # texts = response.text_annotations
+    # ans = texts[0].description.replace("\n", "")
+    # print(ans)
 
-    substrings = ["蕃薯", "甲苯醌", "豌豆", "天然香料","亞麻籽", "鹿角菜膠", "角叉菜膠", "瓜爾豆膠" , "關華豆膠", "黃原膠", "三仙膠", "玉米糖膠","K3" ]
-    alert_list = []
+    # substrings = ["蕃薯", "甲苯醌", "豌豆", "天然香料","亞麻籽", "鹿角菜膠", "角叉菜膠", "瓜爾豆膠" , "關華豆膠", "黃原膠", "三仙膠", "玉米糖膠","K3" ]
+    # alert_list = []
 
-    for s in substrings:
-        if s in ans:
-            # print(s)
-            alert_list.append(s)
-        else:
-            pass
-    return alert_list
-
+    # for s in substrings:
+    #     if s in ans:
+    #         # print(s)
+    #         alert_list.append(s)
+    #     else:
+    #         pass
+    # return alert_list
 
 
 ## 選單功能
