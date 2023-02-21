@@ -171,7 +171,8 @@ def image_message(message_id):
     img = Image.open(io.BytesIO(b))
 
     # response = classify_brands(img)
-    response = allergen_analysis(message_id)
+    allergen = allergen_analysis(message_id)
+    response = allergen
     print(response)
 
     message = {
