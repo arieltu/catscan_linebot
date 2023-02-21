@@ -172,12 +172,12 @@ def image_message(message_id):
 
     # response = classify_brands(img)
     allergen = allergen_analysis(message_id)
-    response = allergen
-    print(response)
+    # response = allergen
+    # print(response)
 
     message = {
         "type": "text",
-        "text": response
+        "text": allergen
     }
     return message
 def classify_brands(img):
