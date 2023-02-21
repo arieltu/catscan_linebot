@@ -146,16 +146,23 @@ def image_message(message_id):
         b += chunk
     img = Image.open(io.BytesIO(b))
 
-    # response = classify_brands(img)
-    allergen = allergen_analysis(message_id)
-    # response = allergen
-    # print(response)
+    alert_list = allergen_analysis(message_id)
+    
+    if len(alert_list) > 0:
+        alert_str = ",".join(alert_list)
+        print(alert_str)
+        print("發現敏感物質: ", alert_str )
+
+        response =  "發現敏感物質:" + alert_str
+    else:
+        response = "未發現敏感物質"
 
     message = {
         "type": "text",
-        "text": allergen
+        "text": response
     }
     return message
+
 def classify_brands(img):
     pass
     # ## tflite 
@@ -213,8 +220,7 @@ def allergen_analysis(message_id):
             alert_list.append(s)
         else:
             pass
-    print(alert_list)    
-    return '發現敏感物質' if len(alert_list) > 0 else '未發現敏感物質'
+    return alert_list
 
 
 
