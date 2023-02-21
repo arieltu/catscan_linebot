@@ -101,30 +101,6 @@ def index():
                 replyMessage(payload)
         elif events[0]["type"] == "postback":
             pass
-            # data = json.loads(events[0]["postback"]["data"])
-            
-            # if "params" in events[0]["postback"]:
-            #     reservedTime = events[0]["postback"]["params"]["datetime"].replace("T", " ")
-            #     payload["messages"] = [
-            #             {
-            #                 "type": "text",
-            #                 "text": F"已完成預約於{reservedTime}的叫車服務"
-            #             }
-            #         ]
-            #     replyMessage(payload)
-            # else:
-                # data = json.loads(events[0]["postback"]["data"])
-                # action = data["action"]
-                # if action == "get_near":
-                #     data["action"] = "get_detail"
-                #     payload["messages"] = [getCarouselMessage(data)]
-                # elif action == "get_detail":
-                #     del data["action"]
-                #     payload["messages"] = [getTaipei101ImageMessage(),
-                #                            getTaipei101LocationMessage(),
-                #                            getMRTVideoMessage(),
-                #                            getCallCarMessage(data)]
-                # replyMessage(payload)
     
     return 'OK'
 
