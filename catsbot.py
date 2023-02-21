@@ -220,7 +220,6 @@ def classify_rest(img, port=8501, ssl=False, model="trees"):
         labels = f.read().split()
     return labels[p] if 0 <= p < len(labels) else 'unknown'
 
-
 ## 選單功能
 def handleBransSearch():
     message = {
@@ -328,12 +327,36 @@ def recordUser(events):
     except FileNotFoundError:
         messages = []
 
+    try:
+        with open("./user/user_record.json", "r") as f:
+            user_record = json.load(f)
+    except FileNotFoundError:
+        user_record = {}
+
+    timestamp = events[0]["timestamp"]
+    sent_day = datetime.fromtimestamp(timestamp / 1000).strftime("%Y%m%d")
+    user_id = events[0]["source"]["userId"]
+
+    print("sent_day:", sent_day)
+
+
+    if sent_day in user_record:
+        if  user_id in user_record[sent_day] :
+            pass
+        else: 
+            user_record[sent_day][user_id] = {
+                "user_id": user_id,
+                "user_name":"Ariel",
+                "messages":[]
+            }
+    else:
+        user_record[sent_day]={}
     
     user_id = events[0]["source"]["userId"]
     display_name = line_bot_api.get_profile(user_id).display_name
     message_id = events[0]["message"]["id"]
     timestamp = events[0]["timestamp"]
-    date_time = datetime.fromtimestamp(timestamp / 1000).strftime("%Y/%m/%d %H:%M")
+    date_time = datetime.fromtimestamp(timestamp / 1000).strftime("%Y.%m.%d %H:%M")
     messages_last_id = messages[-1]["id"]
 
     print("date_time:",date_time)
