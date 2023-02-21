@@ -92,15 +92,8 @@ def index():
                 payload["messages"] = [image_message(message_id)]
 
                 replyMessage(payload)
-            elif events[0]["message"]["type"] == "location":
-                payload["messages"] = "location"
-                # title = events[0]["message"]["title"]
-                # latitude = events[0]["message"]["latitude"]
-                # longitude = events[0]["message"]["longitude"]
-                # payload["messages"] = [getLocationConfirmMessage(title, latitude, longitude)]
-                replyMessage(payload)
-        elif events[0]["type"] == "postback":
-            pass
+        # elif events[0]["type"] == "postback":
+        #     pass
     
     return 'OK'
 
