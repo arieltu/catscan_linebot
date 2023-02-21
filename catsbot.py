@@ -38,7 +38,8 @@ line_login_secret = config.get('line-bot', 'line_login_secret')
 
 # ## model
 # model = load_model(config.get('model', 'model_h5'))
-# label = config.get('model', 'label_file')
+label = config.get('model', 'label_file')
+host = config.get('REST', 'rest_host')
 
 ## 請求 header
 HEADER = {
@@ -89,7 +90,7 @@ def index():
                 replyMessage(payload)
             elif events[0]["message"]["type"] == "image":
                 message_id = events[0]["message"]["id"]                
-                payload["messages"] = [image_message(message_id)]
+                payload["messages"] = [image_message(message_id,events)]
 
                 replyMessage(payload)
         # elif events[0]["type"] == "postback":
@@ -130,7 +131,7 @@ def replyMessage(payload):
 
 
 ## 辨識圖片
-def image_message(message_id):
+def image_message(message_id, events):
     # message_id = event.message.id
     message_content = line_bot_api.get_message_content(message_id)
         
@@ -139,52 +140,41 @@ def image_message(message_id):
         b += chunk
     img = Image.open(io.BytesIO(b))
 
-    response = classify_brands(img)
+    # response = classify_rest(img)
+
+    r = classify_rest(img, port=8501, ssl=False, model="trees")
+    replyToken = events[0]["replyToken"]
+    line_bot_api.reply_message(
+        replyToken,
+        TextSendMessage(text=r))
+
     alert_list = allergen_analysis(message_id)
     
-    if len(alert_list) > 0:
-        alert_str = ",".join(alert_list)
-        print(alert_str)
-        print("發現敏感物質: ", alert_str )
+    # if len(alert_list) > 0:
+    #     alert_str = ",".join(alert_list)
+    #     print(alert_str)
+    #     print("發現敏感物質: ", alert_str )
 
-        response =  "發現敏感物質:" + alert_str
-    else:
-        response = "未發現敏感物質"
+    #     response =  "發現敏感物質:" + alert_str
+    # else:
+    #     response = "未發現敏感物質"
 
-    message = {
-        "type": "text",
-        "text": response
-    }
-    return message
+    # message = {
+    #     "type": "text",
+    #     "text": response
+    # }
+    # return message
 
-def classify_brands(img):    
-    # ## tflite 
-    # img = img.resize((224,224))
-    # img = np.array(img)
-    # interpreter.allocate_tensors()
-
-    # input_details = interpreter.get_input_details()
-    # input_tensor = interpreter.tensor(input_details[0]['index'])()
-
-    # input_tensor[:] = img
-    # interpreter.invoke()
-
-    # output_details = interpreter.get_output_details()
-    # result = interpreter.get_tensor(output_details[0]['index'])
-    # gc.collect()
-    # tf.keras.backend.clear_session()
-
-    # # return result
-    
-    ## h5
-    img = ImageOps.fit(img, model.input.shape[1:3])
-    prediction = model.predict(np.expand_dims(img, axis=0)/255.)
-    p = np.argmax(prediction)
-    with open(label, encoding='utf-8') as f:
-        # labels = f.read().split()
-        labels = f.readlines()
-    # print(labels[p])    
-    return labels[p] if 0 <= p < len(labels) else 'unknown'
+# def classify_brands(img):    
+#     ## h5
+#     img = ImageOps.fit(img, model.input.shape[1:3])
+#     prediction = model.predict(np.expand_dims(img, axis=0)/255.)
+#     p = np.argmax(prediction)
+#     with open(label, encoding='utf-8') as f:
+#         # labels = f.read().split()
+#         labels = f.readlines()
+#     # print(labels[p])    
+#     return labels[p] if 0 <= p < len(labels) else 'unknown'
 
 def allergen_analysis(message_id):
     pass
@@ -215,6 +205,20 @@ def allergen_analysis(message_id):
     #     else:
     #         pass
     # return alert_list
+
+def classify_rest(img, port=8501, ssl=False, model="trees"):
+    res = 448
+    rest = f'http{"s" if ssl else ""}://{host}:{port}/v1/models/{model}:predict'
+
+    img = ImageOps.fit(img, (res, res))
+    img = np.expand_dims(img, axis=0)/255.
+    headers = {"content-type": "application/json"}
+    data = json.dumps({"instances": img.tolist()})
+    r = requests.post(rest, headers=headers, data=data)
+    p = np.argmax(r.json()['predictions'])
+    with open(label, encoding='utf-8') as f:
+        labels = f.read().split()
+    return labels[p] if 0 <= p < len(labels) else 'unknown'
 
 
 ## 選單功能
