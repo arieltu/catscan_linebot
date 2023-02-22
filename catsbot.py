@@ -241,9 +241,587 @@ def classify_rest(img, model, port=8501, ssl=False):
 ## 選單功能
 def handleBransSearch():
     message = {
-            "type": "text",
-            "text": "你好~ 我們目前收錄了 27 種罐頭品牌，請直接輸入罐頭品牌搜尋:"
+        "type": "flex",
+        "altText": "請選擇想要分析的貓罐頭品牌：",
+        "contents": {
+        "type": "carousel",
+        "contents": [
+            {
+            "type": "bubble",
+            "header": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "text",
+                    "text": "brands analysis",
+                    "weight": "bold",
+                    "color": "#FBF8F5",
+                    "size": "sm"
+                },
+                {
+                    "type": "text",
+                    "text": "品牌文字搜尋",
+                    "weight": "bold",
+                    "size": "xl",
+                    "margin": "md",
+                    "color": "#FBF8F5"
+                }
+                ]
+            },
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "text",
+                    "text": "Hi, 我們目前收錄了共 20 種的貓罐頭品牌，請從下方選出想要分析的貓罐頭：",
+                    "size": "sm",
+                    "color": "#aaaaaa",
+                    "wrap": True
+                },
+                {
+                    "type": "box",
+                    "layout": "vertical",
+                    "margin": "xxl",
+                    "spacing": "sm",
+                    "contents": [
+                    {
+                        "type": "separator",
+                        "margin": "none"
+                    },
+                    {
+                        "type": "button",
+                        "action": {
+                        "type": "postback",
+                        "label": "Lady flavor 好味小姐",
+                        "data": "flow=brandsDetailSearch&brands=Lady flavor 好味小姐",
+                        "displayText": "Lady flavor 好味小姐"
+                        },
+                        "margin": "none",
+                        "color": "#8E7A4D"
+                    },
+                    {
+                        "type": "button",
+                        "action": {
+                        "type": "postback",
+                        "label": "Dogcatstar 汪喵星球",
+                        "data": "flow=brandsDetailSearch&brands=Dogcatstar 汪喵星球",
+                        "displayText": "Dogcatstar 汪喵星球"
+                        },
+                        "margin": "none",
+                        "color": "#8E7A4D"
+                    },
+                    {
+                        "type": "button",
+                        "action": {
+                        "type": "postback",
+                        "label": "Litomon 怪獸部落",
+                        "data": "flow=brandsDetailSearch&brands=Litomon 怪獸部落",
+                        "displayText": "Litomon 怪獸部落"
+                        },
+                        "margin": "none",
+                        "color": "#8E7A4D"
+                    },
+                    {
+                        "type": "button",
+                        "action": {
+                        "type": "postback",
+                        "label": "Carnic Maniac 肉食控",
+                        "data": "flow=brandsDetailSearch&brands=Carnic Maniac 肉食控",
+                        "displayText": "Carnic Maniac 肉食控"
+                        },
+                        "margin": "none",
+                        "color": "#8E7A4D"
+                    },
+                    {
+                        "type": "button",
+                        "action": {
+                        "type": "postback",
+                        "label": "Catpool 貓侍",
+                        "data": "flow=brandsDetailSearch&brands=Catpool 貓侍",
+                        "displayText": "Catpool 貓侍"
+                        },
+                        "margin": "none",
+                        "color": "#8E7A4D"
+                    },
+                    {
+                        "type": "separator",
+                        "margin": "none"
+                    }
+                    ],
+                    "action": {
+                    "type": "postback",
+                    "label": "action",
+                    "data": "hello"
+                    }
+                },
+                {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "margin": "md",
+                    "contents": [
+                    {
+                        "type": "text",
+                        "text": "〖貓咪罐罐調查局〗將為您列出品牌罐頭的各口味營養比例及敏感成分分析，希望透過此分析可以讓您選擇到最合適的貓咪罐頭。",
+                        "size": "xs",
+                        "color": "#aaaaaa",
+                        "flex": 0,
+                        "wrap": True
+                    },
+                    {
+                        "type": "text",
+                        "text": "#743289384279",
+                        "color": "#aaaaaa",
+                        "size": "xs",
+                        "align": "end"
+                    }
+                    ]
+                }
+                ],
+                "backgroundColor": "#FBF8F5"
+            },
+            "styles": {
+                "header": {
+                "backgroundColor": "#C9B0A7",
+                "separator": False
+                }
+            }
+            },
+            {
+            "type": "bubble",
+            "header": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "text",
+                    "text": "brands analysis",
+                    "weight": "bold",
+                    "color": "#FBF8F5",
+                    "size": "sm"
+                },
+                {
+                    "type": "text",
+                    "text": "品牌文字搜尋",
+                    "weight": "bold",
+                    "size": "xl",
+                    "margin": "md",
+                    "color": "#FBF8F5"
+                }
+                ]
+            },
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "text",
+                    "text": "Hi, 我們目前收錄了共 20 種的貓罐頭品牌，請從下方選出想要分析的貓罐頭：",
+                    "size": "sm",
+                    "color": "#aaaaaa",
+                    "wrap": True
+                },
+                {
+                    "type": "box",
+                    "layout": "vertical",
+                    "margin": "xxl",
+                    "spacing": "sm",
+                    "contents": [
+                    {
+                        "type": "separator",
+                        "margin": "none"
+                    },
+                    {
+                        "type": "button",
+                        "action": {
+                        "type": "postback",
+                        "label": "Fantastic 超越汪喵",
+                        "data": "flow=brandsDetailSearch&brands=Fantastic 超越汪喵",
+                        "displayText": "Fantastic 超越汪喵"
+                        },
+                        "margin": "none",
+                        "color": "#8E7A4D"
+                    },
+                    {
+                        "type": "button",
+                        "action": {
+                        "type": "postback",
+                        "label": "Farmina 法米納",
+                        "data": "flow=brandsDetailSearch&brands=Farmina 法米納",
+                        "displayText": "Farmina 法米納"
+                        },
+                        "margin": "none",
+                        "color": "#8E7A4D"
+                    },
+                    {
+                        "type": "button",
+                        "action": {
+                        "type": "postback",
+                        "label": "Feline Natural K9 鮮燉",
+                        "data": "flow=brandsDetailSearch&brands=Feline Natural K9 鮮燉",
+                        "displayText": "Feline Natural K9 鮮燉"
+                        },
+                        "margin": "none",
+                        "color": "#8E7A4D"
+                    },
+                    {
+                        "type": "button",
+                        "action": {
+                        "type": "postback",
+                        "label": "Halo 嘿囉",
+                        "data": "flow=brandsDetailSearch&brands=Halo 嘿囉",
+                        "displayText": "Halo 嘿囉"
+                        },
+                        "margin": "none",
+                        "color": "#8E7A4D"
+                    },
+                    {
+                        "type": "button",
+                        "action": {
+                        "type": "postback",
+                        "label": "Healthy Shores 健康海岸",
+                        "data": "flow=brandsDetailSearch&brands=Healthy Shores 健康海岸",
+                        "displayText": "Healthy Shores 健康海岸"
+                        },
+                        "margin": "none",
+                        "color": "#8E7A4D"
+                    },
+                    {
+                        "type": "separator",
+                        "margin": "none"
+                    }
+                    ],
+                    "action": {
+                    "type": "postback",
+                    "label": "action",
+                    "data": "hello"
+                    }
+                },
+                {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "margin": "md",
+                    "contents": [
+                    {
+                        "type": "text",
+                        "text": "〖貓咪罐罐調查局〗將為您列出品牌罐頭的各口味營養比例及敏感成分分析，希望透過此分析可以讓您選擇到最合適的貓咪罐頭。",
+                        "size": "xs",
+                        "color": "#aaaaaa",
+                        "flex": 0,
+                        "wrap": True
+                    },
+                    {
+                        "type": "text",
+                        "text": "#743289384279",
+                        "color": "#aaaaaa",
+                        "size": "xs",
+                        "align": "end"
+                    }
+                    ]
+                }
+                ],
+                "backgroundColor": "#FBF8F5"
+            },
+            "styles": {
+                "header": {
+                "backgroundColor": "#C9B0A7",
+                "separator": False
+                }
+            }
+            },
+            {
+            "type": "bubble",
+            "header": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "text",
+                    "text": "brands analysis",
+                    "weight": "bold",
+                    "color": "#FBF8F5",
+                    "size": "sm"
+                },
+                {
+                    "type": "text",
+                    "text": "品牌文字搜尋",
+                    "weight": "bold",
+                    "size": "xl",
+                    "margin": "md",
+                    "color": "#FBF8F5"
+                }
+                ]
+            },
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "text",
+                    "text": "Hi, 我們目前收錄了共 20 種的貓罐頭品牌，請從下方選出想要分析的貓罐頭：",
+                    "size": "sm",
+                    "color": "#aaaaaa",
+                    "wrap": True
+                },
+                {
+                    "type": "box",
+                    "layout": "vertical",
+                    "margin": "xxl",
+                    "spacing": "sm",
+                    "contents": [
+                    {
+                        "type": "separator",
+                        "margin": "none"
+                    },
+                    {
+                        "type": "button",
+                        "action": {
+                        "type": "postback",
+                        "label": "Hoorooroo 厚肉肉",
+                        "data": "flow=brandsDetailSearch&brands=Hoorooroo 厚肉肉",
+                        "displayText": "Hoorooroo 厚肉肉"
+                        },
+                        "margin": "none",
+                        "color": "#8E7A4D"
+                    },
+                    {
+                        "type": "button",
+                        "action": {
+                        "type": "postback",
+                        "label": "Instinct 原點",
+                        "data": "flow=brandsDetailSearch&brands=Instinct 原點米納",
+                        "displayText": "Instinct 原點"
+                        },
+                        "margin": "none",
+                        "color": "#8E7A4D"
+                    },
+                    {
+                        "type": "button",
+                        "action": {
+                        "type": "postback",
+                        "label": "Joy food 極貓道",
+                        "data": "flow=brandsDetailSearch&brands=Joy food 極貓道",
+                        "displayText": "Joy food 極貓道"
+                        },
+                        "margin": "none",
+                        "color": "#8E7A4D"
+                    },
+                    {
+                        "type": "button",
+                        "action": {
+                        "type": "postback",
+                        "label": "Kakato 卡格",
+                        "data": "flow=brandsDetailSearch&brands=Kakato 卡格",
+                        "displayText": "Kakato 卡格"
+                        },
+                        "margin": "none",
+                        "color": "#8E7A4D"
+                    },
+                    {
+                        "type": "button",
+                        "action": {
+                        "type": "postback",
+                        "label": "PawPawLand 肉球世界",
+                        "data": "flow=brandsDetailSearch&brands=PawPawLand 肉球世界",
+                        "displayText": "PawPawLand 肉球世界"
+                        },
+                        "margin": "none",
+                        "color": "#8E7A4D"
+                    },
+                    {
+                        "type": "separator",
+                        "margin": "none"
+                    }
+                    ],
+                    "action": {
+                    "type": "postback",
+                    "label": "action",
+                    "data": "hello"
+                    }
+                },
+                {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "margin": "md",
+                    "contents": [
+                    {
+                        "type": "text",
+                        "text": "〖貓咪罐罐調查局〗將為您列出品牌罐頭的各口味營養比例及敏感成分分析，希望透過此分析可以讓您選擇到最合適的貓咪罐頭。",
+                        "size": "xs",
+                        "color": "#aaaaaa",
+                        "flex": 0,
+                        "wrap": True
+                    },
+                    {
+                        "type": "text",
+                        "text": "#743289384279",
+                        "color": "#aaaaaa",
+                        "size": "xs",
+                        "align": "end"
+                    }
+                    ]
+                }
+                ],
+                "backgroundColor": "#FBF8F5"
+            },
+            "styles": {
+                "header": {
+                "backgroundColor": "#C9B0A7",
+                "separator": False
+                }
+            }
+            },
+            {
+            "type": "bubble",
+            "header": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "text",
+                    "text": "brands analysis",
+                    "weight": "bold",
+                    "color": "#FBF8F5",
+                    "size": "sm"
+                },
+                {
+                    "type": "text",
+                    "text": "品牌文字搜尋",
+                    "weight": "bold",
+                    "size": "xl",
+                    "margin": "md",
+                    "color": "#FBF8F5"
+                }
+                ]
+            },
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "text",
+                    "text": "Hi, 我們目前收錄了共 20 種的貓罐頭品牌，請從下方選出想要分析的貓罐頭：",
+                    "size": "sm",
+                    "color": "#aaaaaa",
+                    "wrap": True
+                },
+                {
+                    "type": "box",
+                    "layout": "vertical",
+                    "margin": "xxl",
+                    "spacing": "sm",
+                    "contents": [
+                    {
+                        "type": "separator",
+                        "margin": "none"
+                    },
+                    {
+                        "type": "button",
+                        "action": {
+                        "type": "postback",
+                        "label": "Weruva 唯美味",
+                        "data": "flow=brandsDetailSearch&brands=Weruva 唯美味",
+                        "displayText": "Weruva 唯美味"
+                        },
+                        "margin": "none",
+                        "color": "#8E7A4D"
+                    },
+                    {
+                        "type": "button",
+                        "action": {
+                        "type": "postback",
+                        "label": "Ziwi Peak 巔峰",
+                        "data": "flow=brandsDetailSearch&brands=Ziwi Peak 巔峰",
+                        "displayText": "Ziwi Peak 巔峰"
+                        },
+                        "margin": "none",
+                        "color": "#8E7A4D"
+                    },
+                    {
+                        "type": "button",
+                        "action": {
+                        "type": "postback",
+                        "label": "hojja 賀家",
+                        "data": "flow=brandsDetailSearch&brands=hojja 賀家",
+                        "displayText": "hojja 賀家"
+                        },
+                        "margin": "none",
+                        "color": "#8E7A4D"
+                    },
+                    {
+                        "type": "button",
+                        "action": {
+                        "type": "postback",
+                        "label": "nu4PET 陪心寵糧",
+                        "data": "flow=brandsDetailSearch&brands=nu4PET 陪心寵糧",
+                        "displayText": "nu4PET 陪心寵糧"
+                        },
+                        "margin": "none",
+                        "color": "#8E7A4D"
+                    },
+                    {
+                        "type": "button",
+                        "action": {
+                        "type": "postback",
+                        "label": "trilogy 奇境",
+                        "data": "flow=brandsDetailSearch&brands=trilogy 奇境",
+                        "displayText": "trilogy 奇境"
+                        },
+                        "margin": "none",
+                        "color": "#8E7A4D"
+                    },
+                    {
+                        "type": "separator",
+                        "margin": "none"
+                    }
+                    ],
+                    "action": {
+                    "type": "postback",
+                    "label": "action",
+                    "data": "hello"
+                    }
+                },
+                {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "margin": "md",
+                    "contents": [
+                    {
+                        "type": "text",
+                        "text": "〖貓咪罐罐調查局〗將為您列出品牌罐頭的各口味營養比例及敏感成分分析，希望透過此分析可以讓您選擇到最合適的貓咪罐頭。",
+                        "size": "xs",
+                        "color": "#aaaaaa",
+                        "flex": 0,
+                        "wrap": True
+                    },
+                    {
+                        "type": "text",
+                        "text": "#743289384279",
+                        "color": "#aaaaaa",
+                        "size": "xs",
+                        "align": "end"
+                    }
+                    ]
+                }
+                ],
+                "backgroundColor": "#FBF8F5"
+            },
+            "styles": {
+                "header": {
+                "backgroundColor": "#C9B0A7",
+                "separator": False
+                }
+            }
+            }
+        ]
+        }
     }
+
+    # message = {
+    #         "type": "text",
+    #         "text": brands_flex
+    # }
     return message
 
 def handleBransAnalysis():
