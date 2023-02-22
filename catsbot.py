@@ -56,7 +56,7 @@ def index():
         return 'ok'
     body = request.json
     events = body["events"]
-    # print(body)
+    print(body)
     
     if "replyToken" in events[0]:
         payload = dict()
@@ -72,15 +72,12 @@ def index():
                 # elif text == "好味小姐":
                     brands = events[0]["message"]["text"]
                     payload["messages"] = [brandsDetail(brands)]        
-                elif text == "你好~ 我要做貓罐頭品牌搜尋": 
+                elif text == "Hi, 我要做罐頭品牌搜尋": 
                     payload["messages"] = [handleBransSearch()]
-                elif text == "你好~ 我要做貓罐頭品牌辨識": 
+                elif text == "Hi, 我要做罐頭品牌辨識": 
                     payload["messages"] = [handleBransAnalysis()]
-                elif text == "你好~ 我要做貓罐頭成分分析": 
+                elif text == "Hi, 我要做罐頭敏感成分分析": 
                     payload["messages"] = [handleGetAllergyRisk(),exampleAlgPhoto()]
-                elif text == "你好~ 我要做貓罐頭營養標示分析": 
-                    payload["messages"] = [handleGetNutritionInfo(),exampleNuPhoto()]
-
                 else:
                     payload["messages"] = [
                             {
@@ -94,8 +91,8 @@ def index():
                 payload["messages"] = [image_message(message_id,events)]
 
                 replyMessage(payload)
-        # elif events[0]["type"] == "postback":
-        #     pass
+        elif events[0]["type"] == "postback":
+            pass
     
     return 'OK'
 
@@ -359,56 +356,68 @@ def recordUser(events):
         else: 
             pass
     
-    message_id = events[0]["message"]["id"]
     date_time = datetime.fromtimestamp(timestamp / 1000).strftime("%Y.%m.%d %H:%M")
     messages_idr = user_id[0:4]+str(timestamp)
 
     print("date_time:",date_time)
-    print("message_id:",message_id)
     print("messages_idr:",messages_idr)
     
-    if events[0]["message"]["type"] == "text":
-        message_type = "text"
-        text = events[0]["message"]["text"]
-        print("message_type:",message_type)
-        print("text:",text)
+    if events[0]["type"] == "message":
+        message_id = events[0]["message"]["id"]
+        if events[0]["message"]["type"] == "text":
+            message_type = "text"
+            text = events[0]["message"]["text"]
+            print("message_type:",message_type)
+            print("text:",text)
 
+            message = {
+                'id': messages_idr,
+                'date_time': date_time,
+                'message_id': message_id,
+                'message_type': message_type,
+                'text': text
+            }
+
+        elif events[0]["message"]["type"] == "image":
+            message_type = "image"
+            image_content = line_bot_api.get_message_content(message_id)
+            
+            path='./static/user_image/' + str(timestamp) + '.jpg'
+            with open(path, 'wb') as fd:
+                for chunk in image_content.iter_content():
+                    fd.write(chunk)
+            image_url = end_point +'/static/user_image/' + str(timestamp) + '.jpg'
+            print("message_type:",message_type)
+            print("image_url:",image_url)
+
+            message = {
+                'id': messages_idr,
+                'date_time': date_time,
+                'message_id': message_id,
+                'message_type': message_type,
+                'image_url': image_url
+            }
+
+
+        else:
+            message_type = events[0]["message"]["type"]
+            print("message_type:",message_type)
+            message = {
+                'id': messages_idr,
+                'date_time': date_time,
+                'message_id': message_id,
+                'message_type': message_type
+            }
+
+
+    elif events[0]["type"] == "postback":
+        postback_data = events[0]["postback"]["data"]
+        print("postback_data:", postback_data)
         message = {
             'id': messages_idr,
             'date_time': date_time,
-            'message_id': message_id,
-            'message_type': message_type,
-            'text': text
-        }
-
-    elif events[0]["message"]["type"] == "image":
-        message_type = "image"
-        image_content = line_bot_api.get_message_content(message_id)
-        
-        path='./static/user_image/' + str(timestamp) + '.jpg'
-        with open(path, 'wb') as fd:
-            for chunk in image_content.iter_content():
-                fd.write(chunk)
-        image_url = end_point +'/static/user_image/' + str(timestamp) + '.jpg'
-        print("message_type:",message_type)
-        print("image_url:",image_url)
-
-        message = {
-            'id': messages_idr,
-            'date_time': date_time,
-            'message_id': message_id,
-            'message_type': message_type,
-            'image_url': image_url
-        }
-
-    else:
-        message_type = events[0]["message"]["type"]
-        print("message_type:",message_type)
-        message = {
-            'id': messages_idr,
-            'date_time': date_time,
-            'message_id': message_id,
-            'message_type': message_type
+            'postback_data': postback_data,
+            'message_type': "postback"
         }
 
 
