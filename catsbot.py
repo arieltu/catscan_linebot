@@ -141,7 +141,7 @@ def replyMessage(payload):
 
 ## 辨識圖片
 def image_message(message_id, events):
-    # message_id = event.message.id
+    ## 讀取圖片
     message_content = line_bot_api.get_message_content(message_id)
         
     b = b''
@@ -149,29 +149,38 @@ def image_message(message_id, events):
         b += chunk
     img = Image.open(io.BytesIO(b))
 
-    ## 1. 讀 user JSON  2. 找到今天日期傳送照片的 user 從 -1 開始找 -> 改 postback 自己存
-    # if events[0]["postback"]["data"]:
-    #     pass
+    ## 確認使用者 ostback 做對應的圖片分析
+    timestamp = events[0]["timestamp"]
+    sent_day = datetime.fromtimestamp(timestamp / 1000).strftime("%Y%m%d")
+    user_id = events[0]["source"]["userId"]   
 
+    with open("./user/user_record.json", "r") as f:
+        user_record = json.load(f)
+    
+    postback_data = user_record[sent_day][user_id]["postbacks"][-1]["postback_data"]
 
-    # response = classify_rest(img)
+    if postback_data == 'flow=brandLogoClassify':
+        response = classify_rest(img, model,port=8501, ssl=False)
+        # response = "reply brandLogoClassify"
+    elif postback_data == 'flow=allergenAnalysis':
+        alert_list = allergen_analysis(timestamp)
+        if len(alert_list) > 0:
+            alert_str = ",".join(alert_list)
+            print(alert_str)
+            print("發現敏感物質: ", alert_str )
 
-    response = classify_rest(img, model,port=8501, ssl=False)
+            response =  "發現敏感物質:" + alert_str
+        else:
+            response = "未發現敏感物質"
+        # response = "reply allergenAnalysis"
+    else:
+        response = "請從下方圖文選單選擇圖片辨識功能"
+    
+
     # replyToken = events[0]["replyToken"]
     # line_bot_api.reply_message(
     #     replyToken,
     #     TextSendMessage(text=r))
-
-    # alert_list = allergen_analysis(message_id)
-    
-    # if len(alert_list) > 0:
-    #     alert_str = ",".join(alert_list)
-    #     print(alert_str)
-    #     print("發現敏感物質: ", alert_str )
-
-    #     response =  "發現敏感物質:" + alert_str
-    # else:
-    #     response = "未發現敏感物質"
 
     message = {
         "type": "text",
@@ -179,14 +188,12 @@ def image_message(message_id, events):
     }
     return message
 
-def allergen_analysis(message_id):
+def allergen_analysis(timestamp):
     YOUR_SERVICE = './gcp/gcpai.json'
     os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = YOUR_SERVICE
     client = vision.ImageAnnotatorClient()
 
-    # one-shot upload
-    PIC = './user/image/' + message_id + '.jpg'
-
+    PIC = './static/user_image/' + str(timestamp) + '.jpg'
     with open(PIC, 'rb') as image_file:
         content = image_file.read()
     
@@ -223,8 +230,10 @@ def classify_rest(img, model, port=8501, ssl=False):
     with open(label, encoding='utf-8') as f:
         # labels = f.read().split()
         labels = f.readlines()
-    print(labels[p])
-    return labels[p] if 0 <= p < len(labels) else 'unknown'
+
+    brands = labels[p].replace("\n", "")
+    print(brands)
+    return brands if 0 <= p < len(labels) else 'unknown'
 
 ## 選單功能
 def handleBransSearch():
