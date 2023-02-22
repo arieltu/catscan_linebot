@@ -72,12 +72,12 @@ def index():
                 # elif text == "好味小姐":
                     brands = events[0]["message"]["text"]
                     payload["messages"] = [brandsDetail(brands)]        
-                elif text == "Hi, 我要做罐頭品牌搜尋": 
-                    payload["messages"] = [handleBransSearch()]
-                elif text == "Hi, 我要做罐頭品牌辨識": 
-                    payload["messages"] = [handleBransAnalysis()]
-                elif text == "Hi, 我要做罐頭敏感成分分析": 
-                    payload["messages"] = [handleGetAllergyRisk(),exampleAlgPhoto()]
+                # elif text == "Hi, 我要做罐頭品牌搜尋": 
+                #     payload["messages"] = [handleBransSearch()]
+                # elif text == "Hi, 我要做罐頭品牌辨識": 
+                #     payload["messages"] = [handleBransAnalysis()]
+                # elif text == "Hi, 我要做罐頭敏感成分分析": 
+                #     payload["messages"] = [handleGetAllergyRisk(),exampleAlgPhoto()]
                 else:
                     payload["messages"] = [
                             {
