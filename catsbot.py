@@ -93,7 +93,18 @@ def index():
                 replyMessage(payload)
         elif events[0]["type"] == "postback":
             pass
-    
+            postback_data = events[0]["postback"]["data"]
+            if postback_data == 'flow=brandsTesxtSearch':
+                payload["messages"] = [handleBransSearch()]
+            elif postback_data == 'flow=brandLogoClassify':
+                payload["messages"] = [handleBransAnalysis()]
+            elif postback_data == 'flow=allergenAnalysis':
+                payload["messages"] = [handleGetAllergyRisk()]
+            else:
+                pass
+
+
+            replyMessage(payload)
     return 'OK'
 
 
@@ -138,6 +149,10 @@ def image_message(message_id, events):
         b += chunk
     img = Image.open(io.BytesIO(b))
 
+    # if events[0]["postback"]["data"]:
+    #     pass
+
+
     # response = classify_rest(img)
 
     response = classify_rest(img, model,port=8501, ssl=False)
@@ -162,17 +177,6 @@ def image_message(message_id, events):
         "text": response
     }
     return message
-
-# def classify_brands(img):    
-#     ## h5
-#     img = ImageOps.fit(img, model.input.shape[1:3])
-#     prediction = model.predict(np.expand_dims(img, axis=0)/255.)
-#     p = np.argmax(prediction)
-#     with open(label, encoding='utf-8') as f:
-#         # labels = f.read().split()
-#         labels = f.readlines()
-#     # print(labels[p])    
-#     return labels[p] if 0 <= p < len(labels) else 'unknown'
 
 def allergen_analysis(message_id):
     YOUR_SERVICE = './gcp/gcpai.json'
@@ -261,14 +265,14 @@ photoQuickReply = {
                         "type": 'action',
                         "action": {
                             "type": 'cameraRoll',
-                            "label": 'Send photo',
+                            "label": '傳送照片',
                         },
                     },
                     {
                         "type": 'action',
                         "action": {
                             "type": 'camera',
-                            "label": 'Open camera',
+                            "label": '拍照',
                         },
                     },
                 ]
