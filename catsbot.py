@@ -149,6 +149,7 @@ def image_message(message_id, events):
         b += chunk
     img = Image.open(io.BytesIO(b))
 
+    ## 1. 讀 user JSON  2. 找到今天日期傳送照片的 user 從 -1 開始找 -> 改 postback 自己存
     # if events[0]["postback"]["data"]:
     #     pass
 
@@ -346,7 +347,8 @@ def recordUser(events):
             user_id:{
                 "user_id": user_id,
                 "user_name":user_name,
-                "messages":[]
+                "messages":[],
+                "postbacks":[]
             }
         }
             
@@ -355,7 +357,8 @@ def recordUser(events):
             user_record[sent_day][user_id] = {
                 "user_id": user_id,
                 "user_name":user_name,
-                "messages":[]
+                "messages":[],
+                "postbacks":[]
             }
         else: 
             pass
@@ -402,7 +405,6 @@ def recordUser(events):
                 'image_url': image_url
             }
 
-
         else:
             message_type = events[0]["message"]["type"]
             print("message_type:",message_type)
@@ -412,20 +414,19 @@ def recordUser(events):
                 'message_id': message_id,
                 'message_type': message_type
             }
-
+        user_record[sent_day][user_id]["messages"].append(message)
 
     elif events[0]["type"] == "postback":
         postback_data = events[0]["postback"]["data"]
         print("postback_data:", postback_data)
-        message = {
+        postback = {
             'id': messages_idr,
             'date_time': date_time,
-            'postback_data': postback_data,
-            'message_type': "postback"
+            'message_type': "postback",
+            'postback_data': postback_data
         }
+        user_record[sent_day][user_id]["postbacks"].append(postback)
 
-
-    user_record[sent_day][user_id]["messages"].append(message)
     with open("./user/user_record.json", "w") as f:
         json.dump(user_record, f)
 
