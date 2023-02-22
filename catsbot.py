@@ -40,6 +40,7 @@ line_login_secret = config.get('line-bot', 'line_login_secret')
 # model = load_model(config.get('model', 'model_h5'))
 label = config.get('model', 'label_file')
 host = config.get('REST', 'rest_host')
+model = config.get('REST', 'rest_model')
 
 ## 請求 header
 HEADER = {
@@ -142,13 +143,13 @@ def image_message(message_id, events):
 
     # response = classify_rest(img)
 
-    r = classify_rest(img, port=8501, ssl=False, model="trees")
-    replyToken = events[0]["replyToken"]
-    line_bot_api.reply_message(
-        replyToken,
-        TextSendMessage(text=r))
+    response = classify_rest(img, model,port=8501, ssl=False)
+    # replyToken = events[0]["replyToken"]
+    # line_bot_api.reply_message(
+    #     replyToken,
+    #     TextSendMessage(text=r))
 
-    alert_list = allergen_analysis(message_id)
+    # alert_list = allergen_analysis(message_id)
     
     # if len(alert_list) > 0:
     #     alert_str = ",".join(alert_list)
@@ -159,11 +160,11 @@ def image_message(message_id, events):
     # else:
     #     response = "未發現敏感物質"
 
-    # message = {
-    #     "type": "text",
-    #     "text": response
-    # }
-    # return message
+    message = {
+        "type": "text",
+        "text": response
+    }
+    return message
 
 # def classify_brands(img):    
 #     ## h5
@@ -177,47 +178,50 @@ def image_message(message_id, events):
 #     return labels[p] if 0 <= p < len(labels) else 'unknown'
 
 def allergen_analysis(message_id):
-    pass
-    # YOUR_SERVICE = './gcp/gcpai.json'
-    # os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = YOUR_SERVICE
-    # client = vision.ImageAnnotatorClient()
+    YOUR_SERVICE = './gcp/gcpai.json'
+    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = YOUR_SERVICE
+    client = vision.ImageAnnotatorClient()
 
-    # # one-shot upload
-    # PIC = './user/image/' + message_id + '.jpg'
+    # one-shot upload
+    PIC = './user/image/' + message_id + '.jpg'
 
-    # with open(PIC, 'rb') as image_file:
-    #     content = image_file.read()
+    with open(PIC, 'rb') as image_file:
+        content = image_file.read()
     
-    # image = vision.Image(content=content)
+    image = vision.Image(content=content)
 
-    # response = client.document_text_detection(image=image)
-    # texts = response.text_annotations
-    # ans = texts[0].description.replace("\n", "")
-    # print(ans)
+    response = client.document_text_detection(image=image)
+    texts = response.text_annotations
+    ans = texts[0].description.replace("\n", "")
+    print(ans)
 
-    # substrings = ["蕃薯", "甲苯醌", "豌豆", "天然香料","亞麻籽", "鹿角菜膠", "角叉菜膠", "瓜爾豆膠" , "關華豆膠", "黃原膠", "三仙膠", "玉米糖膠","K3" ]
-    # alert_list = []
+    substrings = ["蕃薯", "甲苯醌", "豌豆", "天然香料","亞麻籽", "鹿角菜膠", "角叉菜膠", "瓜爾豆膠" , "關華豆膠", "黃原膠", "三仙膠", "玉米糖膠","K3" ]
+    alert_list = []
 
-    # for s in substrings:
-    #     if s in ans:
-    #         # print(s)
-    #         alert_list.append(s)
-    #     else:
-    #         pass
-    # return alert_list
+    for s in substrings:
+        if s in ans:
+            # print(s)
+            alert_list.append(s)
+        else:
+            pass
+    return alert_list
 
-def classify_rest(img, port=8501, ssl=False, model="trees"):
+def classify_rest(img, model, port=8501, ssl=False):
     res = 448
     rest = f'http{"s" if ssl else ""}://{host}:{port}/v1/models/{model}:predict'
 
     img = ImageOps.fit(img, (res, res))
     img = np.expand_dims(img, axis=0)/255.
+
     headers = {"content-type": "application/json"}
     data = json.dumps({"instances": img.tolist()})
     r = requests.post(rest, headers=headers, data=data)
     p = np.argmax(r.json()['predictions'])
+
     with open(label, encoding='utf-8') as f:
-        labels = f.read().split()
+        # labels = f.read().split()
+        labels = f.readlines()
+    print(labels[p])
     return labels[p] if 0 <= p < len(labels) else 'unknown'
 
 ## 選單功能
@@ -322,12 +326,6 @@ def exampleAlgPhoto():
 
 def recordUser(events):
     try:
-        with open("./user/messages.json", "r") as f:
-            messages = json.load(f)
-    except FileNotFoundError:
-        messages = []
-
-    try:
         with open("./user/user_record.json", "r") as f:
             user_record = json.load(f)
     except FileNotFoundError:
@@ -336,33 +334,38 @@ def recordUser(events):
     timestamp = events[0]["timestamp"]
     sent_day = datetime.fromtimestamp(timestamp / 1000).strftime("%Y%m%d")
     user_id = events[0]["source"]["userId"]
+    user_name = line_bot_api.get_profile(user_id).display_name
 
     print("sent_day:", sent_day)
+    print("user_id:",user_id)
+    print("user_name:",user_name)
 
-
-    if sent_day in user_record:
-        if  user_id in user_record[sent_day] :
-            pass
-        else: 
-            user_record[sent_day][user_id] = {
+    if sent_day not in user_record:
+        user_record[sent_day]={
+            user_id:{
                 "user_id": user_id,
-                "user_name":"Ariel",
+                "user_name":user_name,
                 "messages":[]
             }
+        }
+            
     else:
-        user_record[sent_day]={}
+        if  user_id not in user_record[sent_day] :
+            user_record[sent_day][user_id] = {
+                "user_id": user_id,
+                "user_name":user_name,
+                "messages":[]
+            }
+        else: 
+            pass
     
-    user_id = events[0]["source"]["userId"]
-    display_name = line_bot_api.get_profile(user_id).display_name
     message_id = events[0]["message"]["id"]
-    timestamp = events[0]["timestamp"]
     date_time = datetime.fromtimestamp(timestamp / 1000).strftime("%Y.%m.%d %H:%M")
-    messages_last_id = messages[-1]["id"]
+    messages_idr = user_id[0:4]+str(timestamp)
 
     print("date_time:",date_time)
-    print("user_id:",user_id)
-    print("display_name:",display_name)
     print("message_id:",message_id)
+    print("messages_idr:",messages_idr)
     
     if events[0]["message"]["type"] == "text":
         message_type = "text"
@@ -371,11 +374,8 @@ def recordUser(events):
         print("text:",text)
 
         message = {
-            # 'id': len(messages),
-            'id': messages_last_id +1,
+            'id': messages_idr,
             'date_time': date_time,
-            'user_id': user_id,
-            'display_name': display_name,
             'message_id': message_id,
             'message_type': message_type,
             'text': text
@@ -385,20 +385,17 @@ def recordUser(events):
         message_type = "image"
         image_content = line_bot_api.get_message_content(message_id)
         
-        path='./user/image/' + message_id + '.jpg'
+        path='./static/user_image/' + str(timestamp) + '.jpg'
         with open(path, 'wb') as fd:
             for chunk in image_content.iter_content():
                 fd.write(chunk)
-        image_url = end_point +'/user/image/' + message_id + '.jpg'
-        # print(image_url, type(image_url))
+        image_url = end_point +'/static/user_image/' + str(timestamp) + '.jpg'
         print("message_type:",message_type)
         print("image_url:",image_url)
 
         message = {
-            'id': messages_last_id +1,
+            'id': messages_idr,
             'date_time': date_time,
-            'user_id': user_id,
-            'display_name': display_name,
             'message_id': message_id,
             'message_type': message_type,
             'image_url': image_url
@@ -408,18 +405,16 @@ def recordUser(events):
         message_type = events[0]["message"]["type"]
         print("message_type:",message_type)
         message = {
-            'id': messages_last_id +1,
+            'id': messages_idr,
             'date_time': date_time,
-            'user_id': user_id,
-            'display_name': display_name,
             'message_id': message_id,
             'message_type': message_type
         }
 
-    
-    messages.append(message)
-    with open("./user/messages.json", "w") as f:
-        json.dump(messages, f)
+
+    user_record[sent_day][user_id]["messages"].append(message)
+    with open("./user/user_record.json", "w") as f:
+        json.dump(user_record, f)
 
 
 def brandsDetail(brands):

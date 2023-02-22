@@ -3,3 +3,5 @@ config.ini
 .catsbot_venv/
 user/messages.json
 user/
+static/user_image/
+test.py
