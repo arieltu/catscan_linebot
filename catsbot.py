@@ -1333,7 +1333,7 @@ def brandsDetail(brands):
             "url": brands_img,
             "size": "full",
             "aspectRatio": "20:13",
-            "aspectMode": "cover"
+            "aspectMode": "fit"
             },
             "body": {
             "type": "box",
