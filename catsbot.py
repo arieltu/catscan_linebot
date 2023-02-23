@@ -92,7 +92,8 @@ def index():
 
                 replyMessage(payload)
         elif events[0]["type"] == "postback":
-            pass
+            # postback__flow = events[0]["postback"]["data"]["flow"]
+            # print(postback__flow)
             postback_data = events[0]["postback"]["data"]
             if postback_data == 'flow=brandsTesxtSearch':
                 payload["messages"] = [handleBransSearch()]
@@ -100,6 +101,9 @@ def index():
                 payload["messages"] = [handleBransAnalysis()]
             elif postback_data == 'flow=allergenAnalysis':
                 payload["messages"] = [handleGetAllergyRisk()]
+            elif postback_data == 'flow=brandsDetailSearch&brands=Lady flavor 好味小姐':
+                brands = "好味小姐"
+                payload["messages"] = [brandsDetail(brands)]
             else:
                 pass
 
