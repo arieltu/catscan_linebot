@@ -57,7 +57,7 @@ def index():
         return 'ok'
     body = request.json
     events = body["events"]
-    print(body)
+    # print(body)
     
     if "replyToken" in events[0]:
         payload = dict()
@@ -1872,7 +1872,7 @@ def brandsDetail(brands):
                   {
                     "type": "text",
                     "text": "腎貓較高",
-                    "color": "#86C166",
+                    "color": "#aaaaaa",
                     "align": "end",
                     "size": "xxs",
                     "offsetTop": "sm"
@@ -1939,7 +1939,7 @@ def brandsDetail(brands):
         elif me_protein == "不在35-70%內":
             protein_box = protein_box_n
         else:
-           pass
+           protein_box = "x"
 
         # 脂肪
         if me_fat == "50%以下":
@@ -1949,7 +1949,7 @@ def brandsDetail(brands):
         elif me_fat == "不在30-65%內":
             fat_box = fat_box_n
         else:
-           pass
+           fat_box = "x"  
 
         # 碳水
         if me_carb == "10%以下":
@@ -1959,7 +1959,7 @@ def brandsDetail(brands):
         elif me_carb == "15%以上":
             carb_box = carb_box_warning
         else:
-           pass        
+           carb_box = "x"        
 
         # 鈣磷比
         if me_cap == "1.1~1.6":
@@ -1967,27 +1967,48 @@ def brandsDetail(brands):
         elif me_cap == "不在1.1~1.6內":
             cap_box = cap_box_n
         else:
-           pass  
+           cap_box == "x"
+        
+        # 磷含量
+        if me_p == "135~250mg/kcal (邁入腎貓)":
+            p_box = plow_box_b
+        elif me_p == "80~135mg/kcal (腎貓處方)":
+            p_box = plow_box_a
+        elif me_p == "大於250mg/kcal":
+            p_box = plow_box_n
+        elif me_p == "125~350mg/kcal":
+            p_box = p_box_good
+        elif me_p == "小於125mg/kcal":
+            p_box = p_box_n_l
+        elif me_p == "大於350mg/kcal":
+            p_box = p_box_n_h
+        elif me_p == "大於400mg/kcal":
+            p_box = p_box_warning
+        else:
+            p_box = "x" 
 
-        # # 磷含量
-        # if "tag2" == "低磷罐" :
-        #     if me_p == "135~250mg/kcal (邁入腎貓)":
-        #         p_box = plow_box_b
-        #     elif me_p == "80~135mg/kcal (腎貓處方)":
-        #         p_box = plow_box_a
-        #     else:
-        #         pass 
-        # else:
-        #     if me_p == "125~350mg/kcal":
-        #         p_box = p_box_good
-        #     elif me_p == "小於125mg/kcal ":
-        #         p_box = p_box_n_l
-        #     elif me_p == "大於350 mg/kcal":
-        #         p_box = p_box_n_h
-        #     elif me_p == "大於400mg/kcal":
-        #         p_box = p_box_warning
-        #     else:
-        #         pass 
+
+        # 磷含量
+        if "tag2" == "低磷罐" :
+            if me_p == "135~250mg/kcal (邁入腎貓)":
+                p_box = plow_box_b
+            elif me_p == "80~135mg/kcal (腎貓處方)":
+                p_box = plow_box_a
+            elif me_p == "大於250mg/kcal":
+                p_box = plow_box_n
+            elif me_p == "大於400mg/kcal":
+                p_box = p_box_warning
+        else:
+            if me_p == "125~350mg/kcal":
+                p_box = p_box_good
+            elif me_p == "小於125mg/kcal ":
+                p_box = p_box_n_l
+            elif me_p == "大於350 mg/kcal":
+                p_box = p_box_n_h
+            elif me_p == "大於400mg/kcal":
+                p_box = p_box_warning
+            else:
+                p_box == "x" 
 
         bubble = {
             "type": "bubble",
@@ -2072,7 +2093,7 @@ def brandsDetail(brands):
                     fat_box,
                     carb_box,
                     cap_box,
-                    plow_box_a
+                    p_box
                 ]
                 },
                 {
@@ -2133,8 +2154,8 @@ def brandsDetail(brands):
         # print(bubble)
         # print("----------")
 
-    print(brands_name)
-    print(brands_img)
+    # print(brands_name)
+    # print(brands_img)
     print(len(brands_detail))
 
 
