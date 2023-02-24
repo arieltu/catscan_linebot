@@ -1406,12 +1406,14 @@ def brandsDetail(brands):
                 "type": "text",
                 "text": brands_name,
                 "weight": "bold",
-                "size": "lg"
+                "size": "lg",
+                "color": "#8b7067ff"
                 },
                 {
                 "type": "text",
                 "text": series_name,
-                "size": "lg"
+                "size": "md",
+                "color": "#8b7067ff"
                 },
                 {
                     "type": "separator",
@@ -1424,7 +1426,7 @@ def brandsDetail(brands):
                         {
                             "type": "text",
                             "text": tag1,
-                            "color": "#aaaaaa",
+                            "color": "#C9B0A7",
                             "size": "sm",
                             "flex": 1,
                             "weight": "bold"
@@ -1432,7 +1434,7 @@ def brandsDetail(brands):
                         {
                             "type": "text",
                             "text": "-"+tag2,
-                            "color": "#aaaaaa",
+                            "color": "#C9B0A7",
                             "size": "sm",
                             "flex": 3,
                             "weight": "regular"
@@ -1448,7 +1450,7 @@ def brandsDetail(brands):
                     "type": "text",
                     "text": AAFCO_tag,
                     "size": "xxs",
-                    "color": "#aaaaaa"
+                    "color": "#C9B0A7"
                     }
                 ]
                 },

@@ -19,12 +19,14 @@
             "type": "text",
             "text": "好味小姐",
             "weight": "bold",
-            "size": "lg"
+            "size": "lg",
+            "color": "#8b7067ff"
           },
           {
             "type": "text",
             "text": "雞肉",
-            "size": "lg"
+            "size": "md",
+            "color": "#8b7067ff"
           },
           {
             "type": "separator",
@@ -37,7 +39,7 @@
               {
                 "type": "text",
                 "text": "主食罐",
-                "color": "#aaaaaa",
+                "color": "#C9B0A7",
                 "size": "sm",
                 "flex": 1,
                 "weight": "bold"
@@ -45,7 +47,7 @@
               {
                 "type": "text",
                 "text": "-幼母貓罐",
-                "color": "#aaaaaa",
+                "color": "#C9B0A7",
                 "size": "sm",
                 "flex": 3,
                 "weight": "regular"
@@ -60,7 +62,7 @@
                 "type": "text",
                 "text": "符合  AAFCO 主食罐標準",
                 "size": "xxs",
-                "color": "#aaaaaa"
+                "color": "#C9B0A7"
               }
             ]
           },
@@ -384,12 +386,14 @@
             "type": "text",
             "text": "品牌名稱",
             "weight": "bold",
-            "size": "lg"
+            "size": "lg",
+            "color": "#8b7067ff"
           },
           {
             "type": "text",
             "text": "系列 / 口味",
-            "size": "lg"
+            "size": "md",
+            "color": "#8b7067ff"
           },
           {
             "type": "separator",
@@ -402,7 +406,7 @@
               {
                 "type": "text",
                 "text": " (主食罐、 副食罐/湯罐)",
-                "color": "#aaaaaa",
+                "color": "#C9B0A7",
                 "size": "sm",
                 "flex": 1,
                 "weight": "bold"
@@ -410,7 +414,7 @@
               {
                 "type": "text",
                 "text": "-tags(幼母貓罐, 低磷罐, 高齡罐...)",
-                "color": "#aaaaaa",
+                "color": "#C9B0A7",
                 "size": "sm",
                 "flex": 3,
                 "weight": "regular"
@@ -425,7 +429,7 @@
                 "type": "text",
                 "text": "(空白) / 符合  AAFCO 主食罐標準",
                 "size": "xxs",
-                "color": "#aaaaaa"
+                "color": "#C9B0A7"
               }
             ]
           },
