@@ -1032,185 +1032,248 @@ def brandsDetail(brands):
     # 蛋白
     protein_box_recom=""
     protein_box_good={
-                  "type": "box",
-                  "layout": "baseline",
-                  "spacing": "xs",
-                  "contents": [
-                    {
-                      "type": "icon",
-                      "url": "https://raw.githubusercontent.com/eirikmadland/notion-icons/master/v5/icon1/ul-check-circle.svg",
-                      "offsetStart": "xs",
-                      "offsetTop": "xs"
-                    },
-                    {
-                      "type": "text",
-                      "text": "蛋白",
-                      "color": "#ffffff",
-                      "size": "sm",
-                      "flex": 0
-                    },
-                    {
-                      "type": "text",
-                      "text": "30~50%",
-                      "wrap": True,
-                      "color": "#ffffff",
-                      "size": "sm",
-                      "align": "center"
-                    }
-                  ],
-                  "backgroundColor": "#98D98E",
-                  "cornerRadius": "lg",
-                  "position": "relative",
-                  "margin": "sm",
-                  "width": "50%",
-                  "justifyContent": "flex-start"
-    }
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "xs",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "url": "https://www.iconsdb.com/icons/preview/white/ok-xxl.png",
+                        "offsetStart": "xs",
+                        "offsetTop": "xs"
+                      },
+                      {
+                        "type": "text",
+                        "text": "蛋白",
+                        "color": "#ffffff",
+                        "size": "sm",
+                        "flex": 0,
+                        "margin": "sm"
+                      },
+                      {
+                        "type": "text",
+                        "text": "30~50%",
+                        "wrap": True,
+                        "color": "#ffffff",
+                        "size": "sm",
+                        "align": "center"
+                      }
+                    ],
+                    "backgroundColor": "#98D98E",
+                    "cornerRadius": "lg",
+                    "position": "relative",
+                    "width": "50%",
+                    "justifyContent": "flex-start"
+                  },
+                  {
+                    "type": "text",
+                    "text": "Good",
+                    "color": "#aaaaaa",
+                    "align": "end"
+                  }
+                ],
+                "margin": "sm"
+              }
     protein_box_warning=""
     # 脂肪
     fat_box_recom=""
     fat_box_good={
-                  "type": "box",
-                  "layout": "baseline",
-                  "spacing": "xs",
-                  "contents": [
-                    {
-                      "type": "icon",
-                      "url": "https://www.iconsdb.com/icons/preview/white/ok-xxl.png",
-                      "offsetStart": "xs",
-                      "offsetTop": "xs"
-                    },
-                    {
-                      "type": "text",
-                      "text": "脂肪",
-                      "color": "#ffffff",
-                      "size": "sm",
-                      "decoration": "none",
-                      "flex": 0
-                    },
-                    {
-                      "type": "text",
-                      "text": "  50~65%",
-                      "wrap": False,
-                      "color": "#ffffff",
-                      "size": "sm",
-                      "align": "center"
-                    }
-                  ],
-                  "backgroundColor": "#98D98E",
-                  "cornerRadius": "lg",
-                  "position": "relative",
-                  "margin": "sm",
-                  "width": "50%"
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "xs",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "url": "https://www.iconsdb.com/icons/preview/white/ok-xxl.png",
+                        "offsetStart": "xs",
+                        "offsetTop": "xs"
+                      },
+                      {
+                        "type": "text",
+                        "text": "脂肪",
+                        "color": "#ffffff",
+                        "size": "sm",
+                        "decoration": "none",
+                        "flex": 0,
+                        "margin": "sm"
+                      },
+                      {
+                        "type": "text",
+                        "text": "  50~65%",
+                        "wrap": False,
+                        "color": "#ffffff",
+                        "size": "sm",
+                        "align": "center"
+                      }
+                    ],
+                    "backgroundColor": "#98D98E",
+                    "cornerRadius": "lg",
+                    "position": "relative",
+                    "width": "50%"
+                  },
+                  {
+                    "type": "text",
+                    "text": "Good",
+                    "color": "#aaaaaa",
+                    "align": "end"
+                  }
+                ],
+                "margin": "sm"
     }
     fat_box_warning=""
     # 碳水
     carb_box_good={
-                  "type": "box",
-                  "layout": "baseline",
-                  "spacing": "xs",
-                  "contents": [
-                    {
-                      "type": "icon",
-                      "url": "https://www.iconsdb.com/icons/preview/white/ok-xxl.png",
-                      "offsetStart": "xs",
-                      "offsetTop": "xs"
-                    },
-                    {
-                      "type": "text",
-                      "text": "碳水",
-                      "color": "#ffffff",
-                      "size": "sm",
-                      "flex": 0
-                    },
-                    {
-                      "type": "text",
-                      "text": "10% ↓",
-                      "wrap": False,
-                      "color": "#ffffff",
-                      "size": "sm",
-                      "align": "center"
-                    }
-                  ],
-                  "backgroundColor": "#98D98E",
-                  "cornerRadius": "lg",
-                  "position": "relative",
-                  "margin": "sm",
-                  "width": "50%"
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "xs",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "url": "https://www.iconsdb.com/icons/preview/white/ok-xxl.png",
+                        "offsetStart": "xs",
+                        "offsetTop": "xs"
+                      },
+                      {
+                        "type": "text",
+                        "text": "碳水",
+                        "color": "#ffffff",
+                        "size": "sm",
+                        "flex": 0,
+                        "margin": "sm"
+                      },
+                      {
+                        "type": "text",
+                        "text": "10% ↓",
+                        "wrap": False,
+                        "color": "#ffffff",
+                        "size": "sm",
+                        "align": "center"
+                      }
+                    ],
+                    "backgroundColor": "#98D98E",
+                    "cornerRadius": "lg",
+                    "position": "relative",
+                    "width": "50%"
+                  },
+                  {
+                    "type": "text",
+                    "text": "Good",
+                    "color": "#aaaaaa",
+                    "align": "end"
+                  }
+                ],
+                "margin": "sm"
     }
     carb_box_warning=""
     carb_box_bad=""
     # 鈣磷比
     cap_box_good= {
-        "type": "box",
-        "layout": "baseline",
-        "spacing": "xs",
-        "contents": [
-        {
-            "type": "icon",
-            "url": "https://www.iconsdb.com/icons/preview/white/ok-xxl.png",
-            "offsetStart": "xs",
-            "offsetTop": "xs"
-        },
-        {
-            "type": "text",
-            "text": "鈣磷比",
-            "color": "#ffffff",
-            "size": "sm"
-        },
-        {
-            "type": "text",
-            "text": "30%",
-            "wrap": False,
-            "color": "#ffffff",
-            "size": "sm"
-        }
-        ],
-        "backgroundColor": "#98D98E",
-        "cornerRadius": "lg",
-        "position": "relative",
-        "margin": "sm",
-        "width": "50%"
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "xs",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "url": "https://www.iconsdb.com/icons/preview/white/ok-xxl.png",
+                        "offsetStart": "xs",
+                        "offsetTop": "xs"
+                      },
+                      {
+                        "type": "text",
+                        "text": "鈣磷比",
+                        "color": "#ffffff",
+                        "size": "sm",
+                        "flex": 0,
+                        "margin": "sm"
+                      },
+                      {
+                        "type": "text",
+                        "text": "1.1~1.6",
+                        "size": "sm",
+                        "color": "#ffffff",
+                        "align": "center"
+                      }
+                    ],
+                    "backgroundColor": "#98D98E",
+                    "cornerRadius": "lg",
+                    "position": "relative",
+                    "alignItems": "center",
+                    "width": "50%"
+                  },
+                  {
+                    "type": "text",
+                    "text": "Good",
+                    "color": "#aaaaaa",
+                    "align": "end"
+                  }
+                ],
+                "margin": "sm"
     }
     # 磷含量
     p_box_good={
-                  "type": "box",
-                  "layout": "baseline",
-                  "spacing": "xs",
-                  "contents": [
-                    {
-                      "type": "icon",
-                      "url": "https://www.iconsdb.com/icons/preview/white/ok-xxl.png",
-                      "offsetStart": "xs",
-                      "offsetTop": "xs"
-                    },
-                    {
-                      "type": "text",
-                      "text": "磷含量",
-                      "color": "#ffffff",
-                      "size": "sm",
-                      "flex": 0
-                    },
-                    {
-                      "type": "text",
-                      "text": "(一般貓貓)",
-                      "color": "#ffffff",
-                      "size": "xxs",
-                      "flex": 0
-                    },
-                    {
-                      "type": "text",
-                      "text": "125~350mg/kcal",
-                      "size": "sm",
-                      "color": "#ffffff",
-                      "align": "center"
-                    }
-                  ],
-                  "backgroundColor": "#98D98E",
-                  "cornerRadius": "lg",
-                  "position": "relative",
-                  "margin": "sm",
-                  "alignItems": "center"
-    }
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "xs",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "url": "https://www.iconsdb.com/icons/preview/white/ok-xxl.png",
+                        "offsetStart": "xs",
+                        "offsetTop": "xs"
+                      },
+                      {
+                        "type": "text",
+                        "text": "磷含量",
+                        "color": "#ffffff",
+                        "size": "sm",
+                        "flex": 0,
+                        "margin": "sm"
+                      },
+                      {
+                        "type": "text",
+                        "text": "80~135mg/kcal",
+                        "size": "sm",
+                        "color": "#ffffff",
+                        "align": "center"
+                      }
+                    ],
+                    "backgroundColor": "#98D98E",
+                    "cornerRadius": "lg",
+                    "position": "relative",
+                    "alignItems": "center",
+                    "width": "75%"
+                  },
+                  {
+                    "type": "text",
+                    "text": "腎貓處方",
+                    "color": "#aaaaaa",
+                    "align": "end",
+                    "size": "xxs",
+                    "offsetTop": "sm"
+                  }
+                ],
+                "margin": "sm"
+              }
     p_box_warning_l=""
     p_box_warning_h=""
     p_box_bad=""
@@ -1453,12 +1516,12 @@ def brandsDetail(brands):
                     }
                 ]
                 }
-            ]
+            ],
+            "backgroundColor": "#FBF8F5"
             },
             "styles": {
-            "footer": {
-                "separator": False,
-                "backgroundColor": "#aaaaaa"
+            "hero": {
+            "backgroundColor": "#FBF8F5"
             }
             }
         }

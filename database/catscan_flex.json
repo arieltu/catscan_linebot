@@ -6,10 +6,10 @@
       "size": "kilo",
       "hero": {
         "type": "image",
-        "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png",
+        "url": "https://www.find.org.tw/attachment/knowledge/22d2de9eeb55b3c417f7cafae7ca2d7e_cover1",
         "size": "full",
         "aspectRatio": "20:13",
-        "aspectMode": "cover"
+        "aspectMode": "fit"
       },
       "body": {
         "type": "box",
@@ -58,20 +58,6 @@
             "contents": [
               {
                 "type": "text",
-                "color": "#aaaaaa",
-                "size": "sm",
-                "flex": 2,
-                "weight": "bold",
-                "text": " "
-              }
-            ]
-          },
-          {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
-              {
-                "type": "text",
                 "text": "符合  AAFCO 主食罐標準",
                 "size": "xxs",
                 "color": "#aaaaaa"
@@ -93,176 +79,237 @@
               },
               {
                 "type": "box",
-                "layout": "baseline",
-                "spacing": "xs",
+                "layout": "horizontal",
                 "contents": [
                   {
-                    "type": "icon",
-                    "url": "https://raw.githubusercontent.com/eirikmadland/notion-icons/master/v5/icon1/ul-check-circle.svg",
-                    "offsetStart": "xs",
-                    "offsetTop": "xs"
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "xs",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "url": "https://raw.githubusercontent.com/eirikmadland/notion-icons/master/v5/icon1/ul-check-circle.svg",
+                        "offsetStart": "xs",
+                        "offsetTop": "xs"
+                      },
+                      {
+                        "type": "text",
+                        "text": "蛋白",
+                        "color": "#ffffff",
+                        "size": "sm",
+                        "flex": 0,
+                        "margin": "sm"
+                      },
+                      {
+                        "type": "text",
+                        "text": "30~50%",
+                        "wrap": true,
+                        "color": "#ffffff",
+                        "size": "sm",
+                        "align": "center"
+                      }
+                    ],
+                    "backgroundColor": "#98D98E",
+                    "cornerRadius": "lg",
+                    "position": "relative",
+                    "width": "50%",
+                    "justifyContent": "flex-start"
                   },
                   {
                     "type": "text",
-                    "text": "蛋白",
-                    "color": "#ffffff",
-                    "size": "sm",
-                    "flex": 0
-                  },
-                  {
-                    "type": "text",
-                    "text": "30~50%",
-                    "wrap": true,
-                    "color": "#ffffff",
-                    "size": "sm",
-                    "align": "center"
+                    "text": "Good",
+                    "color": "#aaaaaa",
+                    "align": "end"
                   }
                 ],
-                "backgroundColor": "#98D98E",
-                "cornerRadius": "lg",
-                "position": "relative",
-                "margin": "sm",
-                "width": "50%",
-                "justifyContent": "flex-start"
+                "margin": "sm"
               },
               {
                 "type": "box",
-                "layout": "baseline",
-                "spacing": "xs",
+                "layout": "horizontal",
                 "contents": [
                   {
-                    "type": "icon",
-                    "url": "https://raw.githubusercontent.com/eirikmadland/notion-icons/master/v5/icon1/ul-check-circle.svg",
-                    "offsetStart": "xs",
-                    "offsetTop": "xs"
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "xs",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "url": "https://www.iconsdb.com/icons/preview/white/ok-xxl.png",
+                        "offsetStart": "xs",
+                        "offsetTop": "xs"
+                      },
+                      {
+                        "type": "text",
+                        "text": "脂肪",
+                        "color": "#ffffff",
+                        "size": "sm",
+                        "decoration": "none",
+                        "flex": 0,
+                        "margin": "sm"
+                      },
+                      {
+                        "type": "text",
+                        "text": "  50~65%",
+                        "wrap": false,
+                        "color": "#ffffff",
+                        "size": "sm",
+                        "align": "center"
+                      }
+                    ],
+                    "backgroundColor": "#98D98E",
+                    "cornerRadius": "lg",
+                    "position": "relative",
+                    "width": "50%"
                   },
                   {
                     "type": "text",
-                    "text": "脂肪",
-                    "color": "#ffffff",
-                    "size": "sm",
-                    "decoration": "none",
-                    "flex": 0
-                  },
-                  {
-                    "type": "text",
-                    "text": "  50~65%",
-                    "wrap": false,
-                    "color": "#ffffff",
-                    "size": "sm",
-                    "align": "center"
+                    "text": "Good",
+                    "color": "#aaaaaa",
+                    "align": "end"
                   }
                 ],
-                "backgroundColor": "#98D98E",
-                "cornerRadius": "lg",
-                "position": "relative",
-                "margin": "sm",
-                "width": "50%"
+                "margin": "sm"
               },
               {
                 "type": "box",
-                "layout": "baseline",
-                "spacing": "xs",
+                "layout": "horizontal",
                 "contents": [
                   {
-                    "type": "icon",
-                    "url": "https://raw.githubusercontent.com/eirikmadland/notion-icons/master/v5/icon1/ul-check-circle.svg",
-                    "offsetStart": "xs",
-                    "offsetTop": "xs"
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "xs",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "url": "https://www.iconsdb.com/icons/preview/white/ok-xxl.png",
+                        "offsetStart": "xs",
+                        "offsetTop": "xs"
+                      },
+                      {
+                        "type": "text",
+                        "text": "碳水",
+                        "color": "#ffffff",
+                        "size": "sm",
+                        "flex": 0,
+                        "margin": "sm"
+                      },
+                      {
+                        "type": "text",
+                        "text": "10% ↓",
+                        "wrap": false,
+                        "color": "#ffffff",
+                        "size": "sm",
+                        "align": "center"
+                      }
+                    ],
+                    "backgroundColor": "#98D98E",
+                    "cornerRadius": "lg",
+                    "position": "relative",
+                    "width": "50%"
                   },
                   {
                     "type": "text",
-                    "text": "碳水",
-                    "color": "#ffffff",
-                    "size": "sm",
-                    "flex": 0
-                  },
-                  {
-                    "type": "text",
-                    "text": "10% ↓",
-                    "wrap": false,
-                    "color": "#ffffff",
-                    "size": "sm",
-                    "align": "center"
+                    "text": "Good",
+                    "color": "#aaaaaa",
+                    "align": "end"
                   }
                 ],
-                "backgroundColor": "#98D98E",
-                "cornerRadius": "lg",
-                "position": "relative",
-                "margin": "sm",
-                "width": "50%"
+                "margin": "sm"
               },
               {
                 "type": "box",
-                "layout": "baseline",
-                "spacing": "xs",
+                "layout": "horizontal",
                 "contents": [
                   {
-                    "type": "icon",
-                    "url": "https://raw.githubusercontent.com/eirikmadland/notion-icons/master/v5/icon1/ul-check-circle.svg",
-                    "offsetStart": "xs",
-                    "offsetTop": "xs"
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "xs",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "url": "https://www.iconsdb.com/icons/preview/white/ok-xxl.png",
+                        "offsetStart": "xs",
+                        "offsetTop": "xs"
+                      },
+                      {
+                        "type": "text",
+                        "text": "鈣磷比",
+                        "color": "#ffffff",
+                        "size": "sm",
+                        "flex": 0,
+                        "margin": "sm"
+                      },
+                      {
+                        "type": "text",
+                        "text": "1.1~1.6",
+                        "size": "sm",
+                        "color": "#ffffff",
+                        "align": "center"
+                      }
+                    ],
+                    "backgroundColor": "#98D98E",
+                    "cornerRadius": "lg",
+                    "position": "relative",
+                    "alignItems": "center",
+                    "width": "50%"
                   },
                   {
                     "type": "text",
-                    "text": "鈣磷比",
-                    "color": "#ffffff",
-                    "size": "sm",
-                    "flex": 0
-                  },
-                  {
-                    "type": "text",
-                    "text": "1.1~1.6",
-                    "size": "sm",
-                    "color": "#ffffff",
-                    "align": "center"
+                    "text": "Good",
+                    "color": "#aaaaaa",
+                    "align": "end"
                   }
                 ],
-                "backgroundColor": "#98D98E",
-                "cornerRadius": "lg",
-                "position": "relative",
-                "margin": "sm",
-                "alignItems": "center",
-                "width": "50%"
+                "margin": "sm"
               },
               {
                 "type": "box",
-                "layout": "baseline",
-                "spacing": "xs",
+                "layout": "horizontal",
                 "contents": [
                   {
-                    "type": "icon",
-                    "url": "https://raw.githubusercontent.com/eirikmadland/notion-icons/master/v5/icon1/ul-check-circle.svg",
-                    "offsetStart": "xs",
-                    "offsetTop": "xs"
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "xs",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "url": "https://www.iconsdb.com/icons/preview/white/ok-xxl.png",
+                        "offsetStart": "xs",
+                        "offsetTop": "xs"
+                      },
+                      {
+                        "type": "text",
+                        "text": "磷含量",
+                        "color": "#ffffff",
+                        "size": "sm",
+                        "flex": 0,
+                        "margin": "sm"
+                      },
+                      {
+                        "type": "text",
+                        "text": "80~135mg/kcal",
+                        "size": "sm",
+                        "color": "#ffffff",
+                        "align": "center"
+                      }
+                    ],
+                    "backgroundColor": "#98D98E",
+                    "cornerRadius": "lg",
+                    "position": "relative",
+                    "alignItems": "center",
+                    "width": "75%"
                   },
                   {
                     "type": "text",
-                    "text": "磷含量",
-                    "color": "#ffffff",
-                    "size": "sm",
-                    "flex": 0
-                  },
-                  {
-                    "type": "text",
-                    "text": "(腎貓處方)",
-                    "color": "#ffffff",
+                    "text": "腎貓處方",
+                    "color": "#aaaaaa",
+                    "align": "end",
                     "size": "xxs",
-                    "flex": 0
-                  },
-                  {
-                    "type": "text",
-                    "text": "80~135mg/kcal",
-                    "size": "sm",
-                    "color": "#ffffff",
-                    "align": "center"
+                    "offsetTop": "sm"
                   }
                 ],
-                "backgroundColor": "#98D98E",
-                "cornerRadius": "lg",
-                "position": "relative",
-                "margin": "sm",
-                "alignItems": "center"
+                "margin": "sm"
               }
             ]
           },
@@ -310,12 +357,12 @@
               }
             ]
           }
-        ]
+        ],
+        "backgroundColor": "#FBF8F5"
       },
       "styles": {
-        "footer": {
-          "separator": false,
-          "backgroundColor": "#aaaaaa"
+        "hero": {
+          "backgroundColor": "#FBF8F5"
         }
       }
     },
@@ -326,8 +373,8 @@
         "type": "image",
         "size": "full",
         "aspectRatio": "20:13",
-        "aspectMode": "cover",
-        "url": "https://scdn.line-apps.com/n/channel_devcenter/img/flexsnapshot/clip/clip11.jpg"
+        "aspectMode": "fit",
+        "url": "https://www.find.org.tw/attachment/knowledge/22d2de9eeb55b3c417f7cafae7ca2d7e_cover1"
       },
       "body": {
         "type": "box",
@@ -350,29 +397,23 @@
           },
           {
             "type": "box",
-            "layout": "vertical",
+            "layout": "horizontal",
             "contents": [
               {
                 "type": "text",
-                "text": " (主食罐 / 副食罐 / 湯罐)",
+                "text": " (主食罐、 副食罐/湯罐)",
                 "color": "#aaaaaa",
                 "size": "sm",
-                "flex": 2,
+                "flex": 1,
                 "weight": "bold"
-              }
-            ]
-          },
-          {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
+              },
               {
                 "type": "text",
-                "text": "tags(幼母貓罐, 低磷罐, 高齡營養罐...)",
+                "text": "-tags(幼母貓罐, 低磷罐, 高齡罐...)",
                 "color": "#aaaaaa",
                 "size": "sm",
-                "flex": 2,
-                "weight": "bold"
+                "flex": 3,
+                "weight": "regular"
               }
             ]
           },
@@ -389,6 +430,10 @@
             ]
           },
           {
+            "type": "separator",
+            "margin": "md"
+          },
+          {
             "type": "box",
             "layout": "vertical",
             "contents": [
@@ -399,176 +444,237 @@
               },
               {
                 "type": "box",
-                "layout": "baseline",
-                "spacing": "xs",
+                "layout": "horizontal",
                 "contents": [
                   {
-                    "type": "icon",
-                    "url": "https://raw.githubusercontent.com/eirikmadland/notion-icons/master/v5/icon1/ul-check-circle.svg",
-                    "offsetStart": "xs",
-                    "offsetTop": "xs"
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "xs",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "url": "https://raw.githubusercontent.com/eirikmadland/notion-icons/master/v5/icon1/ul-check-circle.svg",
+                        "offsetStart": "xs",
+                        "offsetTop": "xs"
+                      },
+                      {
+                        "type": "text",
+                        "text": "蛋白",
+                        "color": "#ffffff",
+                        "size": "sm",
+                        "flex": 0,
+                        "margin": "sm"
+                      },
+                      {
+                        "type": "text",
+                        "text": "30~50%",
+                        "wrap": true,
+                        "color": "#ffffff",
+                        "size": "sm",
+                        "align": "center"
+                      }
+                    ],
+                    "backgroundColor": "#98D98E",
+                    "cornerRadius": "lg",
+                    "position": "relative",
+                    "width": "50%",
+                    "justifyContent": "flex-start"
                   },
                   {
                     "type": "text",
-                    "text": "蛋白",
-                    "color": "#ffffff",
-                    "size": "sm",
-                    "flex": 0
-                  },
-                  {
-                    "type": "text",
-                    "text": "30~50%",
-                    "wrap": true,
-                    "color": "#ffffff",
-                    "size": "sm",
-                    "align": "center"
+                    "text": "Good",
+                    "color": "#aaaaaa",
+                    "align": "end"
                   }
                 ],
-                "backgroundColor": "#98D98E",
-                "cornerRadius": "lg",
-                "position": "relative",
-                "margin": "sm",
-                "width": "50%",
-                "justifyContent": "flex-start"
+                "margin": "sm"
               },
               {
                 "type": "box",
-                "layout": "baseline",
-                "spacing": "xs",
+                "layout": "horizontal",
                 "contents": [
                   {
-                    "type": "icon",
-                    "url": "https://raw.githubusercontent.com/eirikmadland/notion-icons/master/v5/icon1/ul-check-circle.svg",
-                    "offsetStart": "xs",
-                    "offsetTop": "xs"
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "xs",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "url": "https://www.iconsdb.com/icons/preview/white/ok-xxl.png",
+                        "offsetStart": "xs",
+                        "offsetTop": "xs"
+                      },
+                      {
+                        "type": "text",
+                        "text": "脂肪",
+                        "color": "#ffffff",
+                        "size": "sm",
+                        "decoration": "none",
+                        "flex": 0,
+                        "margin": "sm"
+                      },
+                      {
+                        "type": "text",
+                        "text": "  50~65%",
+                        "wrap": false,
+                        "color": "#ffffff",
+                        "size": "sm",
+                        "align": "center"
+                      }
+                    ],
+                    "backgroundColor": "#98D98E",
+                    "cornerRadius": "lg",
+                    "position": "relative",
+                    "width": "50%"
                   },
                   {
                     "type": "text",
-                    "text": "脂肪",
-                    "color": "#ffffff",
-                    "size": "sm",
-                    "decoration": "none",
-                    "flex": 0
-                  },
-                  {
-                    "type": "text",
-                    "text": "  50~65%",
-                    "wrap": false,
-                    "color": "#ffffff",
-                    "size": "sm",
-                    "align": "center"
+                    "text": "Good",
+                    "color": "#aaaaaa",
+                    "align": "end"
                   }
                 ],
-                "backgroundColor": "#98D98E",
-                "cornerRadius": "lg",
-                "position": "relative",
-                "margin": "sm",
-                "width": "50%"
+                "margin": "sm"
               },
               {
                 "type": "box",
-                "layout": "baseline",
-                "spacing": "xs",
+                "layout": "horizontal",
                 "contents": [
                   {
-                    "type": "icon",
-                    "url": "https://raw.githubusercontent.com/eirikmadland/notion-icons/master/v5/icon1/ul-check-circle.svg",
-                    "offsetStart": "xs",
-                    "offsetTop": "xs"
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "xs",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "url": "https://www.iconsdb.com/icons/preview/white/ok-xxl.png",
+                        "offsetStart": "xs",
+                        "offsetTop": "xs"
+                      },
+                      {
+                        "type": "text",
+                        "text": "碳水",
+                        "color": "#ffffff",
+                        "size": "sm",
+                        "flex": 0,
+                        "margin": "sm"
+                      },
+                      {
+                        "type": "text",
+                        "text": "10% ↓",
+                        "wrap": false,
+                        "color": "#ffffff",
+                        "size": "sm",
+                        "align": "center"
+                      }
+                    ],
+                    "backgroundColor": "#98D98E",
+                    "cornerRadius": "lg",
+                    "position": "relative",
+                    "width": "50%"
                   },
                   {
                     "type": "text",
-                    "text": "碳水",
-                    "color": "#ffffff",
-                    "size": "sm",
-                    "flex": 0
-                  },
-                  {
-                    "type": "text",
-                    "text": "10% ↓",
-                    "wrap": false,
-                    "color": "#ffffff",
-                    "size": "sm",
-                    "align": "center"
+                    "text": "Good",
+                    "color": "#aaaaaa",
+                    "align": "end"
                   }
                 ],
-                "backgroundColor": "#98D98E",
-                "cornerRadius": "lg",
-                "position": "relative",
-                "margin": "sm",
-                "width": "50%"
+                "margin": "sm"
               },
               {
                 "type": "box",
-                "layout": "baseline",
-                "spacing": "xs",
+                "layout": "horizontal",
                 "contents": [
                   {
-                    "type": "icon",
-                    "url": "https://raw.githubusercontent.com/eirikmadland/notion-icons/master/v5/icon1/ul-check-circle.svg",
-                    "offsetStart": "xs",
-                    "offsetTop": "xs"
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "xs",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "url": "https://www.iconsdb.com/icons/preview/white/ok-xxl.png",
+                        "offsetStart": "xs",
+                        "offsetTop": "xs"
+                      },
+                      {
+                        "type": "text",
+                        "text": "鈣磷比",
+                        "color": "#ffffff",
+                        "size": "sm",
+                        "flex": 0,
+                        "margin": "sm"
+                      },
+                      {
+                        "type": "text",
+                        "text": "1.1~1.6",
+                        "size": "sm",
+                        "color": "#ffffff",
+                        "align": "center"
+                      }
+                    ],
+                    "backgroundColor": "#98D98E",
+                    "cornerRadius": "lg",
+                    "position": "relative",
+                    "alignItems": "center",
+                    "width": "50%"
                   },
                   {
                     "type": "text",
-                    "text": "鈣磷比",
-                    "color": "#ffffff",
-                    "size": "sm",
-                    "flex": 0
-                  },
-                  {
-                    "type": "text",
-                    "text": "1.1~1.6",
-                    "size": "sm",
-                    "color": "#ffffff",
-                    "align": "center"
+                    "text": "Good",
+                    "color": "#aaaaaa",
+                    "align": "end"
                   }
                 ],
-                "backgroundColor": "#98D98E",
-                "cornerRadius": "lg",
-                "position": "relative",
-                "margin": "sm",
-                "alignItems": "center",
-                "width": "50%"
+                "margin": "sm"
               },
               {
                 "type": "box",
-                "layout": "baseline",
-                "spacing": "xs",
+                "layout": "horizontal",
                 "contents": [
                   {
-                    "type": "icon",
-                    "url": "https://raw.githubusercontent.com/eirikmadland/notion-icons/master/v5/icon1/ul-check-circle.svg",
-                    "offsetStart": "xs",
-                    "offsetTop": "xs"
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "xs",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "url": "https://www.iconsdb.com/icons/preview/white/ok-xxl.png",
+                        "offsetStart": "xs",
+                        "offsetTop": "xs"
+                      },
+                      {
+                        "type": "text",
+                        "text": "磷含量",
+                        "color": "#ffffff",
+                        "size": "sm",
+                        "flex": 0,
+                        "margin": "sm"
+                      },
+                      {
+                        "type": "text",
+                        "text": "125~350mg/kcal",
+                        "size": "sm",
+                        "color": "#ffffff",
+                        "align": "center"
+                      }
+                    ],
+                    "backgroundColor": "#98D98E",
+                    "cornerRadius": "lg",
+                    "position": "relative",
+                    "alignItems": "center",
+                    "width": "75%"
                   },
                   {
                     "type": "text",
-                    "text": "磷含量",
-                    "color": "#ffffff",
-                    "size": "sm",
-                    "flex": 0
-                  },
-                  {
-                    "type": "text",
-                    "text": "(一般貓貓)",
-                    "color": "#ffffff",
+                    "text": "一般貓貓",
+                    "color": "#aaaaaa",
+                    "align": "end",
                     "size": "xxs",
-                    "flex": 0
-                  },
-                  {
-                    "type": "text",
-                    "text": "125~350mg/kcal",
-                    "size": "sm",
-                    "color": "#ffffff",
-                    "align": "center"
+                    "offsetTop": "sm"
                   }
                 ],
-                "backgroundColor": "#98D98E",
-                "cornerRadius": "lg",
-                "position": "relative",
-                "margin": "sm",
-                "alignItems": "center"
+                "margin": "sm"
               }
             ]
           },
@@ -616,12 +722,12 @@
               }
             ]
           }
-        ]
+        ],
+        "backgroundColor": "#FBF8F5"
       },
       "styles": {
-        "footer": {
-          "backgroundColor": "#aaaaaa",
-          "separator": false
+        "hero": {
+          "backgroundColor": "#FBF8F5"
         }
       }
     },
@@ -630,10 +736,10 @@
       "size": "kilo",
       "hero": {
         "type": "image",
-        "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png",
+        "url": "https://www.find.org.tw/attachment/knowledge/22d2de9eeb55b3c417f7cafae7ca2d7e_cover1",
         "size": "full",
         "aspectRatio": "20:13",
-        "aspectMode": "cover"
+        "aspectMode": "fit"
       },
       "body": {
         "type": "box",
@@ -656,29 +762,23 @@
           },
           {
             "type": "box",
-            "layout": "vertical",
+            "layout": "horizontal",
             "contents": [
               {
                 "type": "text",
                 "text": "主食罐",
                 "color": "#aaaaaa",
                 "size": "sm",
-                "flex": 2,
+                "flex": 1,
                 "weight": "bold"
-              }
-            ]
-          },
-          {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
+              },
               {
                 "type": "text",
-                "text": "幼母貓罐",
+                "text": "-幼母貓罐",
                 "color": "#aaaaaa",
                 "size": "sm",
-                "flex": 2,
-                "weight": "bold"
+                "flex": 3,
+                "weight": "regular"
               }
             ]
           },
@@ -695,6 +795,10 @@
             ]
           },
           {
+            "type": "separator",
+            "margin": "md"
+          },
+          {
             "type": "box",
             "layout": "vertical",
             "contents": [
@@ -705,176 +809,237 @@
               },
               {
                 "type": "box",
-                "layout": "baseline",
-                "spacing": "xs",
+                "layout": "horizontal",
                 "contents": [
                   {
-                    "type": "icon",
-                    "url": "https://raw.githubusercontent.com/eirikmadland/notion-icons/master/v5/icon1/ul-check-circle.svg",
-                    "offsetStart": "xs",
-                    "offsetTop": "xs"
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "xs",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "url": "https://raw.githubusercontent.com/eirikmadland/notion-icons/master/v5/icon1/ul-check-circle.svg",
+                        "offsetStart": "xs",
+                        "offsetTop": "xs"
+                      },
+                      {
+                        "type": "text",
+                        "text": "蛋白",
+                        "color": "#ffffff",
+                        "size": "sm",
+                        "flex": 0,
+                        "margin": "sm"
+                      },
+                      {
+                        "type": "text",
+                        "text": "30~50%",
+                        "wrap": true,
+                        "color": "#ffffff",
+                        "size": "sm",
+                        "align": "center"
+                      }
+                    ],
+                    "backgroundColor": "#98D98E",
+                    "cornerRadius": "lg",
+                    "position": "relative",
+                    "width": "50%",
+                    "justifyContent": "flex-start"
                   },
                   {
                     "type": "text",
-                    "text": "蛋白",
-                    "color": "#ffffff",
-                    "size": "sm",
-                    "flex": 0
-                  },
-                  {
-                    "type": "text",
-                    "text": "30~50%",
-                    "wrap": true,
-                    "color": "#ffffff",
-                    "size": "sm",
-                    "align": "center"
+                    "text": "Good",
+                    "color": "#aaaaaa",
+                    "align": "end"
                   }
                 ],
-                "backgroundColor": "#98D98E",
-                "cornerRadius": "lg",
-                "position": "relative",
-                "margin": "sm",
-                "width": "50%",
-                "justifyContent": "flex-start"
+                "margin": "sm"
               },
               {
                 "type": "box",
-                "layout": "baseline",
-                "spacing": "xs",
+                "layout": "horizontal",
                 "contents": [
                   {
-                    "type": "icon",
-                    "url": "https://raw.githubusercontent.com/eirikmadland/notion-icons/master/v5/icon1/ul-check-circle.svg",
-                    "offsetStart": "xs",
-                    "offsetTop": "xs"
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "xs",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "url": "https://www.iconsdb.com/icons/preview/white/ok-xxl.png",
+                        "offsetStart": "xs",
+                        "offsetTop": "xs"
+                      },
+                      {
+                        "type": "text",
+                        "text": "脂肪",
+                        "color": "#ffffff",
+                        "size": "sm",
+                        "decoration": "none",
+                        "flex": 0,
+                        "margin": "sm"
+                      },
+                      {
+                        "type": "text",
+                        "text": "  50~65%",
+                        "wrap": false,
+                        "color": "#ffffff",
+                        "size": "sm",
+                        "align": "center"
+                      }
+                    ],
+                    "backgroundColor": "#98D98E",
+                    "cornerRadius": "lg",
+                    "position": "relative",
+                    "width": "50%"
                   },
                   {
                     "type": "text",
-                    "text": "脂肪",
-                    "color": "#ffffff",
-                    "size": "sm",
-                    "decoration": "none",
-                    "flex": 0
-                  },
-                  {
-                    "type": "text",
-                    "text": "  50~65%",
-                    "wrap": false,
-                    "color": "#ffffff",
-                    "size": "sm",
-                    "align": "center"
+                    "text": "Good",
+                    "color": "#aaaaaa",
+                    "align": "end"
                   }
                 ],
-                "backgroundColor": "#98D98E",
-                "cornerRadius": "lg",
-                "position": "relative",
-                "margin": "sm",
-                "width": "50%"
+                "margin": "sm"
               },
               {
                 "type": "box",
-                "layout": "baseline",
-                "spacing": "xs",
+                "layout": "horizontal",
                 "contents": [
                   {
-                    "type": "icon",
-                    "url": "https://raw.githubusercontent.com/eirikmadland/notion-icons/master/v5/icon1/ul-check-circle.svg",
-                    "offsetStart": "xs",
-                    "offsetTop": "xs"
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "xs",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "url": "https://www.iconsdb.com/icons/preview/white/ok-xxl.png",
+                        "offsetStart": "xs",
+                        "offsetTop": "xs"
+                      },
+                      {
+                        "type": "text",
+                        "text": "碳水",
+                        "color": "#ffffff",
+                        "size": "sm",
+                        "flex": 0,
+                        "margin": "sm"
+                      },
+                      {
+                        "type": "text",
+                        "text": "10% ↓",
+                        "wrap": false,
+                        "color": "#ffffff",
+                        "size": "sm",
+                        "align": "center"
+                      }
+                    ],
+                    "backgroundColor": "#98D98E",
+                    "cornerRadius": "lg",
+                    "position": "relative",
+                    "width": "50%"
                   },
                   {
                     "type": "text",
-                    "text": "碳水",
-                    "color": "#ffffff",
-                    "size": "sm",
-                    "flex": 0
-                  },
-                  {
-                    "type": "text",
-                    "text": "10% ↓",
-                    "wrap": false,
-                    "color": "#ffffff",
-                    "size": "sm",
-                    "align": "center"
+                    "text": "Good",
+                    "color": "#aaaaaa",
+                    "align": "end"
                   }
                 ],
-                "backgroundColor": "#98D98E",
-                "cornerRadius": "lg",
-                "position": "relative",
-                "margin": "sm",
-                "width": "50%"
+                "margin": "sm"
               },
               {
                 "type": "box",
-                "layout": "baseline",
-                "spacing": "xs",
+                "layout": "horizontal",
                 "contents": [
                   {
-                    "type": "icon",
-                    "url": "https://raw.githubusercontent.com/eirikmadland/notion-icons/master/v5/icon1/ul-check-circle.svg",
-                    "offsetStart": "xs",
-                    "offsetTop": "xs"
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "xs",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "url": "https://www.iconsdb.com/icons/preview/white/ok-xxl.png",
+                        "offsetStart": "xs",
+                        "offsetTop": "xs"
+                      },
+                      {
+                        "type": "text",
+                        "text": "鈣磷比",
+                        "color": "#ffffff",
+                        "size": "sm",
+                        "flex": 0,
+                        "margin": "sm"
+                      },
+                      {
+                        "type": "text",
+                        "text": "1.1~1.6",
+                        "size": "sm",
+                        "color": "#ffffff",
+                        "align": "center"
+                      }
+                    ],
+                    "backgroundColor": "#98D98E",
+                    "cornerRadius": "lg",
+                    "position": "relative",
+                    "alignItems": "center",
+                    "width": "50%"
                   },
                   {
                     "type": "text",
-                    "text": "鈣磷比",
-                    "color": "#ffffff",
-                    "size": "sm",
-                    "flex": 0
-                  },
-                  {
-                    "type": "text",
-                    "text": "1.1~1.6",
-                    "size": "sm",
-                    "color": "#ffffff",
-                    "align": "center"
+                    "text": "Good",
+                    "color": "#aaaaaa",
+                    "align": "end"
                   }
                 ],
-                "backgroundColor": "#98D98E",
-                "cornerRadius": "lg",
-                "position": "relative",
-                "margin": "sm",
-                "alignItems": "center",
-                "width": "50%"
+                "margin": "sm"
               },
               {
                 "type": "box",
-                "layout": "baseline",
-                "spacing": "xs",
+                "layout": "horizontal",
                 "contents": [
                   {
-                    "type": "icon",
-                    "url": "https://raw.githubusercontent.com/eirikmadland/notion-icons/master/v5/icon1/ul-check-circle.svg",
-                    "offsetStart": "xs",
-                    "offsetTop": "xs"
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "xs",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "url": "https://www.iconsdb.com/icons/preview/white/ok-xxl.png",
+                        "offsetStart": "xs",
+                        "offsetTop": "xs"
+                      },
+                      {
+                        "type": "text",
+                        "text": "磷含量",
+                        "color": "#ffffff",
+                        "size": "sm",
+                        "flex": 0,
+                        "margin": "sm"
+                      },
+                      {
+                        "type": "text",
+                        "text": "80~135mg/kcal",
+                        "size": "sm",
+                        "color": "#ffffff",
+                        "align": "center"
+                      }
+                    ],
+                    "backgroundColor": "#98D98E",
+                    "cornerRadius": "lg",
+                    "position": "relative",
+                    "alignItems": "center",
+                    "width": "75%"
                   },
                   {
                     "type": "text",
-                    "text": "磷含量",
-                    "color": "#ffffff",
-                    "size": "sm",
-                    "flex": 0
-                  },
-                  {
-                    "type": "text",
-                    "text": "(腎貓處方)",
-                    "color": "#ffffff",
+                    "text": "腎貓處方",
+                    "color": "#aaaaaa",
+                    "align": "end",
                     "size": "xxs",
-                    "flex": 0
-                  },
-                  {
-                    "type": "text",
-                    "text": "80~135mg/kcal",
-                    "size": "sm",
-                    "color": "#ffffff",
-                    "align": "center"
+                    "offsetTop": "sm"
                   }
                 ],
-                "backgroundColor": "#98D98E",
-                "cornerRadius": "lg",
-                "position": "relative",
-                "margin": "sm",
-                "alignItems": "center"
+                "margin": "sm"
               }
             ]
           },
@@ -922,12 +1087,12 @@
               }
             ]
           }
-        ]
+        ],
+        "backgroundColor": "#FBF8F5"
       },
       "styles": {
-        "footer": {
-          "separator": false,
-          "backgroundColor": "#aaaaaa"
+        "hero": {
+          "backgroundColor": "#FBF8F5"
         }
       }
     }
