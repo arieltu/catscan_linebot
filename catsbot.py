@@ -1036,7 +1036,52 @@ def brandsDetail(brands):
 
     ## 樣板
     # 蛋白
-    protein_box_recom=""
+    protein_box_great={
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "xs",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "url": "https://www.iconsdb.com/icons/preview/white/star-2-xxl.png",
+                        "offsetStart": "xs",
+                        "offsetTop": "xs"
+                      },
+                      {
+                        "type": "text",
+                        "text": "蛋白",
+                        "color": "#FBF8F5",
+                        "size": "sm",
+                        "flex": 0,
+                        "margin": "sm"
+                      },
+                      {
+                        "type": "text",
+                        "text": "50% ↑",
+                        "color": "#FBF8F5",
+                        "size": "sm",
+                        "align": "center"
+                      }
+                    ],
+                    "backgroundColor": "#F7C242",
+                    "cornerRadius": "lg",
+                    "position": "relative",
+                    "width": "50%",
+                    "justifyContent": "flex-start"
+                  },
+                  {
+                    "type": "text",
+                    "text": "Great",
+                    "color": "#F7C242",
+                    "align": "end"
+                  }
+                ],
+                "margin": "sm"
+    }
     protein_box_good={
                 "type": "box",
                 "layout": "horizontal",
@@ -1084,9 +1129,99 @@ def brandsDetail(brands):
                 ],
                 "margin": "sm"
     }
-    protein_box_warning=""
+    protein_box_n={
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "xs",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "url": "https://www.iconsdb.com/icons/preview/white/alert-xxl.png",
+                        "offsetStart": "xs",
+                        "offsetTop": "xs"
+                      },
+                      {
+                        "type": "text",
+                        "text": "蛋白",
+                        "color": "#FBF8F5",
+                        "size": "sm",
+                        "flex": 0,
+                        "margin": "sm"
+                      },
+                      {
+                        "type": "text",
+                        "text": "不在35~70%內",
+                        "color": "#FBF8F5",
+                        "size": "sm",
+                        "align": "center"
+                      }
+                    ],
+                    "backgroundColor": "#BDC0BA",
+                    "cornerRadius": "lg",
+                    "position": "relative",
+                    "width": "70%",
+                    "justifyContent": "flex-start"
+                  },
+                  {
+                    "type": "text",
+                    "text": "-",
+                    "color": "#aaaaaa",
+                    "align": "end"
+                  }
+                ],
+                "margin": "sm"
+    }
     # 脂肪
-    fat_box_recom=""
+    fat_box_great={
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "xs",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "url": "https://www.iconsdb.com/icons/preview/white/star-8-xxl.png",
+                        "offsetStart": "xs",
+                        "offsetTop": "xs"
+                      },
+                      {
+                        "type": "text",
+                        "text": "脂肪",
+                        "color": "#FBF8F5",
+                        "size": "sm",
+                        "decoration": "none",
+                        "flex": 0,
+                        "margin": "sm"
+                      },
+                      {
+                        "type": "text",
+                        "text": "50% ↓",
+                        "color": "#FBF8F5",
+                        "size": "sm",
+                        "align": "center"
+                      }
+                    ],
+                    "backgroundColor": "#F7C242",
+                    "cornerRadius": "lg",
+                    "position": "relative",
+                    "width": "50%"
+                  },
+                  {
+                    "type": "text",
+                    "text": "Great",
+                    "color": "#F7C242",
+                    "align": "end"
+                  }
+                ],
+                "margin": "sm"
+    }
     fat_box_good={
                 "type": "box",
                 "layout": "horizontal",
@@ -1134,7 +1269,51 @@ def brandsDetail(brands):
                 ],
                 "margin": "sm"
     }
-    fat_box_warning=""
+    fat_box_n={
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "xs",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "url": "https://www.iconsdb.com/icons/preview/white/alert-xxl.png",
+                        "offsetStart": "xs",
+                        "offsetTop": "xs"
+                      },
+                      {
+                        "type": "text",
+                        "text": "脂肪",
+                        "color": "#FBF8F5",
+                        "size": "sm",
+                        "flex": 0,
+                        "margin": "sm"
+                      },
+                      {
+                        "type": "text",
+                        "text": "不在30~65%內",
+                        "color": "#FBF8F5",
+                        "size": "sm",
+                        "align": "center"
+                      }
+                    ],
+                    "backgroundColor": "#BDC0BA",
+                    "cornerRadius": "lg",
+                    "position": "relative",
+                    "width": "70%"
+                  },
+                  {
+                    "type": "text",
+                    "text": "-",
+                    "color": "#aaaaaa",
+                    "align": "end"
+                  }
+                ],
+                "margin": "sm"
+    }
     # 碳水
     carb_box_good={
                 "type": "box",
@@ -1181,8 +1360,97 @@ def brandsDetail(brands):
                 ],
                 "margin": "sm"
     }
-    carb_box_n=""
-    carb_box_warning=""
+    carb_box_n={
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "xs",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "url": "https://www.iconsdb.com/icons/preview/white/alert-xxl.png",
+                        "offsetStart": "xs",
+                        "offsetTop": "xs"
+                      },
+                      {
+                        "type": "text",
+                        "text": "碳水",
+                        "color": "#FBF8F5",
+                        "size": "sm",
+                        "flex": 0,
+                        "margin": "sm"
+                      },
+                      {
+                        "type": "text",
+                        "text": "10% ↑",
+                        "color": "#FBF8F5",
+                        "size": "sm",
+                        "align": "center"
+                      }
+                    ],
+                    "backgroundColor": "#BDC0BA",
+                    "cornerRadius": "lg",
+                    "position": "relative",
+                    "width": "50%"
+                  },
+                  {
+                    "type": "text",
+                    "text": "-",
+                    "color": "#aaaaaa",
+                    "align": "end"
+                  }
+                ],
+                "margin": "sm"
+    }
+    carb_box_warning={
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "xs",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "url": "https://www.iconsdb.com/icons/preview/white/alert-xxl.png",
+                        "offsetStart": "xs",
+                        "offsetTop": "xs"
+                      },
+                      {
+                        "type": "text",
+                        "text": "碳水",
+                        "color": "#FBF8F5",
+                        "size": "sm",
+                        "flex": 0,
+                        "margin": "sm"
+                      },
+                      {
+                        "type": "text",
+                        "text": " 15% ↑",
+                        "color": "#FBF8F5",
+                        "size": "sm",
+                        "align": "center"
+                      }
+                    ],
+                    "backgroundColor": "#F17C67",
+                    "cornerRadius": "lg",
+                    "position": "relative",
+                    "width": "50%"
+                  },
+                  {
+                    "type": "text",
+                    "text": "warning",
+                    "color": "#F17C67",
+                    "align": "end",
+                    "size": "sm"
+                  }
+                ],
+                "margin": "sm"
+    }
     # 鈣磷比
     cap_box_good= {
                 "type": "box",
@@ -1230,7 +1498,52 @@ def brandsDetail(brands):
                 ],
                 "margin": "sm"
     }
-    cap_box_n={}
+    cap_box_n={
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "xs",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "url": "https://www.iconsdb.com/icons/preview/white/alert-xxl.png",
+                        "offsetStart": "xs",
+                        "offsetTop": "xs"
+                      },
+                      {
+                        "type": "text",
+                        "text": "鈣磷比",
+                        "color": "#FBF8F5",
+                        "size": "sm",
+                        "flex": 0,
+                        "margin": "sm"
+                      },
+                      {
+                        "type": "text",
+                        "text": "不在1.1~1.6內",
+                        "size": "sm",
+                        "color": "#FBF8F5",
+                        "align": "center"
+                      }
+                    ],
+                    "backgroundColor": "#BDC0BA",
+                    "cornerRadius": "lg",
+                    "position": "relative",
+                    "alignItems": "center",
+                    "width": "70%"
+                  },
+                  {
+                    "type": "text",
+                    "text": "-",
+                    "color": "#aaaaaa",
+                    "align": "end"
+                  }
+                ],
+                "margin": "sm"
+    }
     # 磷含量
     p_box_good={
                 "type": "box",
@@ -1279,9 +1592,150 @@ def brandsDetail(brands):
                 ],
                 "margin": "sm"
     }
-    p_box_n_l=""
-    p_box_n_h=""
-    p_box_warning=""
+    p_box_n_l={
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "xs",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "url": "https://www.iconsdb.com/icons/preview/white/alert-xxl.png",
+                        "offsetStart": "xs",
+                        "offsetTop": "xs"
+                      },
+                      {
+                        "type": "text",
+                        "text": "磷含量",
+                        "color": "#FBF8F5",
+                        "size": "sm",
+                        "flex": 0,
+                        "margin": "sm"
+                      },
+                      {
+                        "type": "text",
+                        "text": "125 mg/kcal ↓",
+                        "size": "sm",
+                        "color": "#FBF8F5",
+                        "align": "center"
+                      }
+                    ],
+                    "backgroundColor": "#BDC0BA",
+                    "cornerRadius": "lg",
+                    "position": "relative",
+                    "alignItems": "center",
+                    "width": "75%"
+                  },
+                  {
+                    "type": "text",
+                    "text": "-",
+                    "color": "#aaaaaa",
+                    "align": "end",
+                    "size": "xxs",
+                    "offsetTop": "sm"
+                  }
+                ],
+                "margin": "sm"
+    }
+    p_box_n_h={
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "xs",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "url": "https://www.iconsdb.com/icons/preview/white/alert-xxl.png",
+                        "offsetStart": "xs",
+                        "offsetTop": "xs"
+                      },
+                      {
+                        "type": "text",
+                        "text": "磷含量",
+                        "color": "#FBF8F5",
+                        "size": "sm",
+                        "flex": 0,
+                        "margin": "sm"
+                      },
+                      {
+                        "type": "text",
+                        "text": "350 mg/kcal ↑",
+                        "size": "sm",
+                        "color": "#FBF8F5",
+                        "align": "center"
+                      }
+                    ],
+                    "backgroundColor": "#BDC0BA",
+                    "cornerRadius": "lg",
+                    "position": "relative",
+                    "alignItems": "center",
+                    "width": "75%"
+                  },
+                  {
+                    "type": "text",
+                    "text": "-",
+                    "color": "#aaaaaa",
+                    "align": "end",
+                    "size": "xxs",
+                    "offsetTop": "sm"
+                  }
+                ],
+                "margin": "sm"
+    }
+    p_box_warning={
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "xs",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "url": "https://www.iconsdb.com/icons/preview/white/alert-xxl.png",
+                        "offsetStart": "xs",
+                        "offsetTop": "xs"
+                      },
+                      {
+                        "type": "text",
+                        "text": "磷含量",
+                        "color": "#FBF8F5",
+                        "size": "sm",
+                        "flex": 0,
+                        "margin": "sm"
+                      },
+                      {
+                        "type": "text",
+                        "text": "400mg/kcal ↑",
+                        "size": "sm",
+                        "color": "#FBF8F5",
+                        "align": "center"
+                      }
+                    ],
+                    "backgroundColor": "#F17C67",
+                    "cornerRadius": "lg",
+                    "position": "relative",
+                    "alignItems": "center",
+                    "width": "75%"
+                  },
+                  {
+                    "type": "text",
+                    "text": "warning",
+                    "color": "#F17C67",
+                    "align": "end",
+                    "offsetTop": "sm",
+                    "size": "sm"
+                  }
+                ],
+                "margin": "sm"
+    }
     plow_box_a={
                 "type": "box",
                 "layout": "horizontal",
@@ -1378,7 +1832,54 @@ def brandsDetail(brands):
                 ],
                 "margin": "sm"
               }
-    plow_box_n={}
+    plow_box_n={
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "xs",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "url": "https://www.iconsdb.com/icons/preview/white/alert-xxl.png",
+                        "offsetStart": "xs",
+                        "offsetTop": "xs"
+                      },
+                      {
+                        "type": "text",
+                        "text": "磷含量",
+                        "color": "#FBF8F5",
+                        "size": "sm",
+                        "flex": 0,
+                        "margin": "sm"
+                      },
+                      {
+                        "type": "text",
+                        "text": "250 mg/kcal ↑",
+                        "size": "sm",
+                        "color": "#FBF8F5",
+                        "align": "center"
+                      }
+                    ],
+                    "backgroundColor": "#BDC0BA",
+                    "cornerRadius": "lg",
+                    "position": "relative",
+                    "alignItems": "center",
+                    "width": "75%"
+                  },
+                  {
+                    "type": "text",
+                    "text": "腎貓較高",
+                    "color": "#aaaaaa",
+                    "align": "end",
+                    "size": "xxs",
+                    "offsetTop": "sm"
+                  }
+                ],
+                "margin": "sm"
+    }
 
     bubbles = []
 
