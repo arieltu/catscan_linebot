@@ -753,12 +753,14 @@
             "type": "text",
             "text": "好味小姐",
             "weight": "bold",
-            "size": "lg"
+            "size": "lg",
+            "color": "#8b7067ff"
           },
           {
             "type": "text",
             "text": "雞肉",
-            "size": "lg"
+            "size": "md",
+            "color": "#8b7067ff"
           },
           {
             "type": "separator",
@@ -771,7 +773,7 @@
               {
                 "type": "text",
                 "text": "主食罐",
-                "color": "#aaaaaa",
+                "color": "#C9B0A7",
                 "size": "sm",
                 "flex": 1,
                 "weight": "bold"
@@ -779,7 +781,7 @@
               {
                 "type": "text",
                 "text": "-幼母貓罐",
-                "color": "#aaaaaa",
+                "color": "#C9B0A7",
                 "size": "sm",
                 "flex": 3,
                 "weight": "regular"
@@ -794,7 +796,7 @@
                 "type": "text",
                 "text": "符合  AAFCO 主食罐標準",
                 "size": "xxs",
-                "color": "#aaaaaa"
+                "color": "#C9B0A7"
               }
             ]
           },

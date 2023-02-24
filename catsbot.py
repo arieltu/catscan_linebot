@@ -1063,7 +1063,7 @@ def brandsDetail(brands):
                         "align": "center"
                       }
                     ],
-                    "backgroundColor": "#98D98E",
+                    "backgroundColor": "#86C166",
                     "cornerRadius": "lg",
                     "position": "relative",
                     "width": "50%",
@@ -1114,7 +1114,7 @@ def brandsDetail(brands):
                         "align": "center"
                       }
                     ],
-                    "backgroundColor": "#98D98E",
+                    "backgroundColor": "#86C166",
                     "cornerRadius": "lg",
                     "position": "relative",
                     "width": "50%"
@@ -1162,7 +1162,7 @@ def brandsDetail(brands):
                         "align": "center"
                       }
                     ],
-                    "backgroundColor": "#98D98E",
+                    "backgroundColor": "#86C166",
                     "cornerRadius": "lg",
                     "position": "relative",
                     "width": "50%"
@@ -1210,7 +1210,7 @@ def brandsDetail(brands):
                         "align": "center"
                       }
                     ],
-                    "backgroundColor": "#98D98E",
+                    "backgroundColor": "#86C166",
                     "cornerRadius": "lg",
                     "position": "relative",
                     "alignItems": "center",
@@ -1251,13 +1251,64 @@ def brandsDetail(brands):
                       },
                       {
                         "type": "text",
+                        "text": "125~350mg/kcal",
+                        "size": "sm",
+                        "color": "#ffffff",
+                        "align": "center"
+                      }
+                    ],
+                    "backgroundColor": "#86C166",
+                    "cornerRadius": "lg",
+                    "position": "relative",
+                    "alignItems": "center",
+                    "width": "75%"
+                  },
+                  {
+                    "type": "text",
+                    "text": "一般貓貓",
+                    "color": "#aaaaaa",
+                    "align": "end",
+                    "size": "xxs",
+                    "offsetTop": "sm"
+                  }
+                ],
+                "margin": "sm"
+    }
+    p_box_warning_l=""
+    p_box_warning_h=""
+    p_box_bad=""
+    plow_box_a={
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "xs",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "url": "https://www.iconsdb.com/icons/preview/white/ok-xxl.png",
+                        "offsetStart": "xs",
+                        "offsetTop": "xs"
+                      },
+                      {
+                        "type": "text",
+                        "text": "磷含量",
+                        "color": "#ffffff",
+                        "size": "sm",
+                        "flex": 0,
+                        "margin": "sm"
+                      },
+                      {
+                        "type": "text",
                         "text": "80~135mg/kcal",
                         "size": "sm",
                         "color": "#ffffff",
                         "align": "center"
                       }
                     ],
-                    "backgroundColor": "#98D98E",
+                    "backgroundColor": "#86C166",
                     "cornerRadius": "lg",
                     "position": "relative",
                     "alignItems": "center",
@@ -1273,11 +1324,7 @@ def brandsDetail(brands):
                   }
                 ],
                 "margin": "sm"
-              }
-    p_box_warning_l=""
-    p_box_warning_h=""
-    p_box_bad=""
-    plow_box_a=""
+    }
     plow_box_b=""
 
     bubbles = []
