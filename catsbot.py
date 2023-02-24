@@ -14,6 +14,7 @@ import io
 import gc
 from datetime import datetime
 
+from urllib.parse import parse_qs
 import requests
 import json
 import configparser
@@ -92,17 +93,21 @@ def index():
 
                 replyMessage(payload)
         elif events[0]["type"] == "postback":
-            # postback__flow = events[0]["postback"]["data"]["flow"]
-            # print(postback__flow)
-            postback_data = events[0]["postback"]["data"]
-            if postback_data == 'flow=brandsTesxtSearch':
+            data = events[0]["postback"]["data"]
+            data_parse = parse_qs(data)
+            flow = data_parse["flow"][0]
+            print(flow, type(flow))
+
+            # postback_data = events[0]["postback"]["data"]
+            if flow == 'brandsTesxtSearch':
                 payload["messages"] = [handleBransSearch()]
-            elif postback_data == 'flow=brandLogoClassify':
+            elif flow == 'brandLogoClassify':
                 payload["messages"] = [handleBransAnalysis()]
-            elif postback_data == 'flow=allergenAnalysis':
+            elif flow == 'allergenAnalysis':
                 payload["messages"] = [handleGetAllergyRisk()]
-            elif postback_data == 'flow=brandsDetailSearch&brands=Lady flavor 好味小姐':
-                brands = "好味小姐"
+            elif flow == 'brandsDetailSearch':
+                # brands = "好味小姐"
+                brands = data_parse["brands"][0]
                 payload["messages"] = [brandsDetail(brands)]
             else:
                 pass
@@ -1028,6 +1033,7 @@ def recordUser(events):
 def brandsDetail(brands):
     print(brands)
 
+
     ## 樣板
     # 蛋白
     protein_box_recom=""
@@ -1049,7 +1055,7 @@ def brandsDetail(brands):
                       {
                         "type": "text",
                         "text": "蛋白",
-                        "color": "#ffffff",
+                        "color": "#FBF8F5",
                         "size": "sm",
                         "flex": 0,
                         "margin": "sm"
@@ -1058,7 +1064,7 @@ def brandsDetail(brands):
                         "type": "text",
                         "text": "30~50%",
                         "wrap": True,
-                        "color": "#ffffff",
+                        "color": "#FBF8F5",
                         "size": "sm",
                         "align": "center"
                       }
@@ -1072,12 +1078,12 @@ def brandsDetail(brands):
                   {
                     "type": "text",
                     "text": "Good",
-                    "color": "#aaaaaa",
+                    "color": "#86C166",
                     "align": "end"
                   }
                 ],
                 "margin": "sm"
-              }
+    }
     protein_box_warning=""
     # 脂肪
     fat_box_recom=""
@@ -1099,7 +1105,7 @@ def brandsDetail(brands):
                       {
                         "type": "text",
                         "text": "脂肪",
-                        "color": "#ffffff",
+                        "color": "#FBF8F5",
                         "size": "sm",
                         "decoration": "none",
                         "flex": 0,
@@ -1109,7 +1115,7 @@ def brandsDetail(brands):
                         "type": "text",
                         "text": "  50~65%",
                         "wrap": False,
-                        "color": "#ffffff",
+                        "color": "#FBF8F5",
                         "size": "sm",
                         "align": "center"
                       }
@@ -1122,7 +1128,7 @@ def brandsDetail(brands):
                   {
                     "type": "text",
                     "text": "Good",
-                    "color": "#aaaaaa",
+                    "color": "#86C166",
                     "align": "end"
                   }
                 ],
@@ -1148,7 +1154,7 @@ def brandsDetail(brands):
                       {
                         "type": "text",
                         "text": "碳水",
-                        "color": "#ffffff",
+                        "color": "#FBF8F5",
                         "size": "sm",
                         "flex": 0,
                         "margin": "sm"
@@ -1156,8 +1162,7 @@ def brandsDetail(brands):
                       {
                         "type": "text",
                         "text": "10% ↓",
-                        "wrap": False,
-                        "color": "#ffffff",
+                        "color": "#FBF8F5",
                         "size": "sm",
                         "align": "center"
                       }
@@ -1170,14 +1175,14 @@ def brandsDetail(brands):
                   {
                     "type": "text",
                     "text": "Good",
-                    "color": "#aaaaaa",
+                    "color": "#86C166",
                     "align": "end"
                   }
                 ],
                 "margin": "sm"
     }
+    carb_box_n=""
     carb_box_warning=""
-    carb_box_bad=""
     # 鈣磷比
     cap_box_good= {
                 "type": "box",
@@ -1197,7 +1202,7 @@ def brandsDetail(brands):
                       {
                         "type": "text",
                         "text": "鈣磷比",
-                        "color": "#ffffff",
+                        "color": "#FBF8F5",
                         "size": "sm",
                         "flex": 0,
                         "margin": "sm"
@@ -1206,7 +1211,7 @@ def brandsDetail(brands):
                         "type": "text",
                         "text": "1.1~1.6",
                         "size": "sm",
-                        "color": "#ffffff",
+                        "color": "#FBF8F5",
                         "align": "center"
                       }
                     ],
@@ -1219,12 +1224,13 @@ def brandsDetail(brands):
                   {
                     "type": "text",
                     "text": "Good",
-                    "color": "#aaaaaa",
+                    "color": "#86C166",
                     "align": "end"
                   }
                 ],
                 "margin": "sm"
     }
+    cap_box_n={}
     # 磷含量
     p_box_good={
                 "type": "box",
@@ -1244,7 +1250,7 @@ def brandsDetail(brands):
                       {
                         "type": "text",
                         "text": "磷含量",
-                        "color": "#ffffff",
+                        "color": "#FBF8F5",
                         "size": "sm",
                         "flex": 0,
                         "margin": "sm"
@@ -1253,7 +1259,7 @@ def brandsDetail(brands):
                         "type": "text",
                         "text": "125~350mg/kcal",
                         "size": "sm",
-                        "color": "#ffffff",
+                        "color": "#FBF8F5",
                         "align": "center"
                       }
                     ],
@@ -1265,18 +1271,17 @@ def brandsDetail(brands):
                   },
                   {
                     "type": "text",
-                    "text": "一般貓貓",
-                    "color": "#aaaaaa",
+                    "text": "Good",
+                    "color": "#86C166",
                     "align": "end",
-                    "size": "xxs",
                     "offsetTop": "sm"
                   }
                 ],
                 "margin": "sm"
     }
-    p_box_warning_l=""
-    p_box_warning_h=""
-    p_box_bad=""
+    p_box_n_l=""
+    p_box_n_h=""
+    p_box_warning=""
     plow_box_a={
                 "type": "box",
                 "layout": "horizontal",
@@ -1325,7 +1330,55 @@ def brandsDetail(brands):
                 ],
                 "margin": "sm"
     }
-    plow_box_b=""
+    plow_box_b={
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "xs",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "url": "https://www.iconsdb.com/icons/preview/white/ok-xxl.png",
+                        "offsetStart": "xs",
+                        "offsetTop": "xs"
+                      },
+                      {
+                        "type": "text",
+                        "text": "磷含量",
+                        "color": "#FBF8F5",
+                        "size": "sm",
+                        "flex": 0,
+                        "margin": "sm"
+                      },
+                      {
+                        "type": "text",
+                        "text": "135~250mg/kcal",
+                        "size": "sm",
+                        "color": "#FBF8F5",
+                        "align": "center"
+                      }
+                    ],
+                    "backgroundColor": "#86C166",
+                    "cornerRadius": "lg",
+                    "position": "relative",
+                    "alignItems": "center",
+                    "width": "75%"
+                  },
+                  {
+                    "type": "text",
+                    "text": "腎貓初期",
+                    "color": "#86C166",
+                    "align": "end",
+                    "size": "xxs",
+                    "offsetTop": "sm"
+                  }
+                ],
+                "margin": "sm"
+              }
+    plow_box_n={}
 
     bubbles = []
 
