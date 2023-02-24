@@ -1776,7 +1776,7 @@ def brandsDetail(brands):
                   {
                     "type": "text",
                     "text": "腎貓處方",
-                    "color": "#aaaaaa",
+                    "color": "#86C166",
                     "align": "end",
                     "size": "xxs",
                     "offsetTop": "sm"
@@ -1872,7 +1872,7 @@ def brandsDetail(brands):
                   {
                     "type": "text",
                     "text": "腎貓較高",
-                    "color": "#aaaaaa",
+                    "color": "#86C166",
                     "align": "end",
                     "size": "xxs",
                     "offsetTop": "sm"
@@ -1900,11 +1900,11 @@ def brandsDetail(brands):
         allergen_c=series["allergen"]
 
         AAFCO=series["AAFCO"]
-        # me_protein=series["me比_蛋白"]
-        # me_fat=series["me比_脂肪"]
-        # me_carb=series["me比_碳水"]
-        # me_cap=series["me比_鈣磷比"]
-        # me_p=series["me比_磷含量"]
+        me_protein=series["me比_蛋白"]
+        me_fat=series["me比_脂肪"]
+        me_carb=series["me比_碳水"]
+        me_cap=series["me比_鈣磷比"]
+        me_p=series["me比_磷含量"]
 
         # brands_img ="https://www.find.org.tw/attachment/knowledge/22d2de9eeb55b3c417f7cafae7ca2d7e_cover1"
         # brands_name="好味小姐"
@@ -1931,61 +1931,61 @@ def brandsDetail(brands):
             AAFCO_tag=" "
                 
 
-        # # 蛋白
-        # if me_protein == "50%以上":
-        #     protein_box = protein_box_good
-        # elif me_protein == "35~50%":
-        #     protein_box = protein_box_good
-        # elif me_protein == "不在35-70%內":
-        #     protein_box = protein_box_good
-        # else:
-        #    pass
+        # 蛋白
+        if me_protein == "50%以上":
+            protein_box = protein_box_great
+        elif me_protein == "35~50%":
+            protein_box = protein_box_good
+        elif me_protein == "不在35-70%內":
+            protein_box = protein_box_n
+        else:
+           pass
 
-        # # 脂肪
-        # if me_fat == "50%以下":
-        #     fat_box = fat_box_good
-        # elif me_fat == "50~65%":
-        #     fat_box = fat_box_good
-        # elif me_fat == "不在30-65%內":
-        #     fat_box = fat_box_good
-        # else:
-        #    pass
+        # 脂肪
+        if me_fat == "50%以下":
+            fat_box = fat_box_great
+        elif me_fat == "50~65%":
+            fat_box = fat_box_good
+        elif me_fat == "不在30-65%內":
+            fat_box = fat_box_n
+        else:
+           pass
 
-        # # 碳水
-        # if me_carb == "10%以下":
-        #     carb_box = carb_box_good
-        # elif me_carb == "10%以上":
-        #     carb_box = carb_box_good
-        # elif me_carb == "15%以上":
-        #     carb_box = carb_box_good
-        # else:
-        #    pass        
+        # 碳水
+        if me_carb == "10%以下":
+            carb_box = carb_box_good
+        elif me_carb == "10%以上":
+            carb_box = carb_box_n
+        elif me_carb == "15%以上":
+            carb_box = carb_box_warning
+        else:
+           pass        
 
-        # # 鈣磷比
-        # if me_cap == "1.1~1.6":
-        #     cap_box = cap_box_good
-        # elif me_cap == "不在1.1~1.6內":
-        #     cap_box = cap_box_good
-        # else:
-        #    pass  
+        # 鈣磷比
+        if me_cap == "1.1~1.6":
+            cap_box = cap_box_good
+        elif me_cap == "不在1.1~1.6內":
+            cap_box = cap_box_n
+        else:
+           pass  
 
         # # 磷含量
         # if "tag2" == "低磷罐" :
         #     if me_p == "135~250mg/kcal (邁入腎貓)":
-        #         p_box = p_box_good
+        #         p_box = plow_box_b
         #     elif me_p == "80~135mg/kcal (腎貓處方)":
-        #         p_box = p_box_good
+        #         p_box = plow_box_a
         #     else:
         #         pass 
         # else:
         #     if me_p == "125~350mg/kcal":
         #         p_box = p_box_good
         #     elif me_p == "小於125mg/kcal ":
-        #         p_box = p_box_good
+        #         p_box = p_box_n_l
         #     elif me_p == "大於350 mg/kcal":
-        #         p_box = p_box_good
+        #         p_box = p_box_n_h
         #     elif me_p == "大於400mg/kcal":
-        #         p_box = p_box_good
+        #         p_box = p_box_warning
         #     else:
         #         pass 
 
@@ -2068,11 +2068,11 @@ def brandsDetail(brands):
                     "text": "營養成分分析:",
                     "size": "xxs"
                     },
-                    protein_box_good,
-                    fat_box_good,
-                    carb_box_good,
-                    cap_box_good,
-                    p_box_good
+                    protein_box,
+                    fat_box,
+                    carb_box,
+                    cap_box,
+                    plow_box_a
                 ]
                 },
                 {
