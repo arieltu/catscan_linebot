@@ -1067,7 +1067,7 @@ def brandsDetail(brands):
                         "align": "center"
                       }
                     ],
-                    "backgroundColor": "#F7C242",
+                    "backgroundColor": "#00AA90",
                     "cornerRadius": "lg",
                     "position": "relative",
                     "width": "50%",
@@ -1075,8 +1075,8 @@ def brandsDetail(brands):
                   },
                   {
                     "type": "text",
-                    "text": "Great",
-                    "color": "#F7C242",
+                    "text": "Excellent",
+                    "color": "#00AA90",
                     "align": "end"
                   }
                 ],
@@ -1208,15 +1208,15 @@ def brandsDetail(brands):
                         "align": "center"
                       }
                     ],
-                    "backgroundColor": "#F7C242",
+                    "backgroundColor": "#00AA90",
                     "cornerRadius": "lg",
                     "position": "relative",
                     "width": "50%"
                   },
                   {
                     "type": "text",
-                    "text": "Great",
-                    "color": "#F7C242",
+                    "text": "Excellent",
+                    "color": "#00AA90",
                     "align": "end"
                   }
                 ],
