@@ -66,7 +66,6 @@ def index():
         recordUser(events)
 
         if events[0]["type"] == "message":
-            print()
             if events[0]["message"]["type"] == "text":
                 text = events[0]["message"]["text"]                
                 if text in canBrands:
@@ -171,6 +170,13 @@ def image_message(message_id, events):
     if postback_data == 'flow=brandLogoClassify':
         response = classify_rest(img, model,port=8501, ssl=False)
         # response = "reply brandLogoClassify"
+        brands = "Lady flavor 好味小姐"
+        payload = dict()
+        replyToken = events[0]["replyToken"]
+        payload["replyToken"] = replyToken 
+        payload["messages"] = [brandsDetail(brands)]
+        replyMessage(payload)
+        
     elif postback_data == 'flow=allergenAnalysis':
         alert_list = allergen_analysis(timestamp)
         if len(alert_list) > 0:
@@ -184,8 +190,8 @@ def image_message(message_id, events):
         # response = "reply allergenAnalysis"
     else:
         response = "請從下方圖文選單選擇圖片辨識功能"
-    
 
+  
     # replyToken = events[0]["replyToken"]
     # line_bot_api.reply_message(
     #     replyToken,
@@ -599,7 +605,7 @@ def handleBransSearch():
                         "action": {
                         "type": "postback",
                         "label": "Instinct 原點",
-                        "data": "flow=brandsDetailSearch&brands=Instinct 原點米納",
+                        "data": "flow=brandsDetailSearch&brands=Instinct 原點",
                         "displayText": "Instinct 原點"
                         },
                         "margin": "none",
@@ -844,14 +850,14 @@ def handleBransAnalysis():
 def handleGetNutritionInfo():
     message = {
         "type": "text",
-        "text": "請拍照或提供貓罐頭成分照片，範例照片如下：",
+        "text": "請拍照或提供貓罐頭成分照片",
         "quickReply": photoQuickReply
     }
     return message
 def handleGetAllergyRisk():
     message = {
         "type": "text",
-        "text": "請拍照或提供貓罐頭成分照片，範例照片如下：",
+        "text": "請拍照或提供貓罐頭成分照片",
         "quickReply": photoQuickReply
     }
     return message
@@ -937,8 +943,6 @@ def recordUser(events):
     user_id = events[0]["source"]["userId"]
     user_name = line_bot_api.get_profile(user_id).display_name
 
-    print("sent_day:", sent_day)
-    print("user_id:",user_id)
     print("user_name:",user_name)
 
     if sent_day not in user_record:
@@ -966,7 +970,7 @@ def recordUser(events):
     messages_idr = user_id[0:4]+str(timestamp)
 
     print("date_time:",date_time)
-    print("messages_idr:",messages_idr)
+    # print("messages_idr:",messages_idr)
     
     if events[0]["type"] == "message":
         message_id = events[0]["message"]["id"]
@@ -994,7 +998,7 @@ def recordUser(events):
                     fd.write(chunk)
             image_url = end_point +'/static/user_image/' + str(timestamp) + '.jpg'
             print("message_type:",message_type)
-            print("image_url:",image_url)
+            # print("image_url:",image_url)
 
             message = {
                 'id': messages_idr,
@@ -1175,6 +1179,53 @@ def brandsDetail(brands):
                 ],
                 "margin": "sm"
     }
+    protein_box_x={
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "xs",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "url": "https://www.iconsdb.com/icons/preview/white/alert-xxl.png",
+                        "offsetStart": "xs",
+                        "offsetTop": "xs"
+                      },
+                      {
+                        "type": "text",
+                        "text": "蛋白",
+                        "color": "#FBF8F5",
+                        "size": "sm",
+                        "flex": 0,
+                        "margin": "sm"
+                      },
+                      {
+                        "type": "text",
+                        "text": "-",
+                        "color": "#FBF8F5",
+                        "size": "sm",
+                        "align": "center"
+                      }
+                    ],
+                    "backgroundColor": "#BDC0BA",
+                    "cornerRadius": "lg",
+                    "position": "relative",
+                    "width": "70%",
+                    "justifyContent": "flex-start"
+                  },
+                  {
+                    "type": "text",
+                    "text": "-",
+                    "color": "#aaaaaa",
+                    "align": "end"
+                  }
+                ],
+                "margin": "sm"
+    }
+    
     # 脂肪
     fat_box_great={
                 "type": "box",
@@ -1314,6 +1365,52 @@ def brandsDetail(brands):
                 ],
                 "margin": "sm"
     }
+    fat_box_x={
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "xs",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "url": "https://www.iconsdb.com/icons/preview/white/alert-xxl.png",
+                        "offsetStart": "xs",
+                        "offsetTop": "xs"
+                      },
+                      {
+                        "type": "text",
+                        "text": "脂肪",
+                        "color": "#FBF8F5",
+                        "size": "sm",
+                        "flex": 0,
+                        "margin": "sm"
+                      },
+                      {
+                        "type": "text",
+                        "text": "-",
+                        "color": "#FBF8F5",
+                        "size": "sm",
+                        "align": "center"
+                      }
+                    ],
+                    "backgroundColor": "#BDC0BA",
+                    "cornerRadius": "lg",
+                    "position": "relative",
+                    "width": "70%"
+                  },
+                  {
+                    "type": "text",
+                    "text": "-",
+                    "color": "#aaaaaa",
+                    "align": "end"
+                  }
+                ],
+                "margin": "sm"
+    }
+    
     # 碳水
     carb_box_good={
                 "type": "box",
@@ -1451,6 +1548,52 @@ def brandsDetail(brands):
                 ],
                 "margin": "sm"
     }
+    carb_box_x={
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "xs",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "url": "https://www.iconsdb.com/icons/preview/white/alert-xxl.png",
+                        "offsetStart": "xs",
+                        "offsetTop": "xs"
+                      },
+                      {
+                        "type": "text",
+                        "text": "碳水",
+                        "color": "#FBF8F5",
+                        "size": "sm",
+                        "flex": 0,
+                        "margin": "sm"
+                      },
+                      {
+                        "type": "text",
+                        "text": "-",
+                        "color": "#FBF8F5",
+                        "size": "sm",
+                        "align": "center"
+                      }
+                    ],
+                    "backgroundColor": "#BDC0BA",
+                    "cornerRadius": "lg",
+                    "position": "relative",
+                    "width": "50%"
+                  },
+                  {
+                    "type": "text",
+                    "text": "-",
+                    "color": "#aaaaaa",
+                    "align": "end"
+                  }
+                ],
+                "margin": "sm"
+    }
+
     # 鈣磷比
     cap_box_good= {
                 "type": "box",
@@ -1544,6 +1687,53 @@ def brandsDetail(brands):
                 ],
                 "margin": "sm"
     }
+    cap_box_x={
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "xs",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "url": "https://www.iconsdb.com/icons/preview/white/alert-xxl.png",
+                        "offsetStart": "xs",
+                        "offsetTop": "xs"
+                      },
+                      {
+                        "type": "text",
+                        "text": "鈣磷比",
+                        "color": "#FBF8F5",
+                        "size": "sm",
+                        "flex": 0,
+                        "margin": "sm"
+                      },
+                      {
+                        "type": "text",
+                        "text": "-",
+                        "size": "sm",
+                        "color": "#FBF8F5",
+                        "align": "center"
+                      }
+                    ],
+                    "backgroundColor": "#BDC0BA",
+                    "cornerRadius": "lg",
+                    "position": "relative",
+                    "alignItems": "center",
+                    "width": "70%"
+                  },
+                  {
+                    "type": "text",
+                    "text": "-",
+                    "color": "#aaaaaa",
+                    "align": "end"
+                  }
+                ],
+                "margin": "sm"
+    }
+    
     # 磷含量
     p_box_good={
                 "type": "box",
@@ -1688,6 +1878,7 @@ def brandsDetail(brands):
                 ],
                 "margin": "sm"
     }
+    
     p_box_warning={
                 "type": "box",
                 "layout": "horizontal",
@@ -1880,283 +2071,594 @@ def brandsDetail(brands):
                 ],
                 "margin": "sm"
     }
+    p_box_x={
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "xs",
+                    "contents": [
+                      {
+                        "type": "icon",
+                        "url": "https://www.iconsdb.com/icons/preview/white/alert-xxl.png",
+                        "offsetStart": "xs",
+                        "offsetTop": "xs"
+                      },
+                      {
+                        "type": "text",
+                        "text": "磷含量",
+                        "color": "#FBF8F5",
+                        "size": "sm",
+                        "flex": 0,
+                        "margin": "sm"
+                      },
+                      {
+                        "type": "text",
+                        "text": "-",
+                        "size": "sm",
+                        "color": "#FBF8F5",
+                        "align": "center"
+                      }
+                    ],
+                    "backgroundColor": "#BDC0BA",
+                    "cornerRadius": "lg",
+                    "position": "relative",
+                    "alignItems": "center",
+                    "width": "75%"
+                  },
+                  {
+                    "type": "text",
+                    "text": "-",
+                    "color": "#aaaaaa",
+                    "align": "end",
+                    "size": "xxs",
+                    "offsetTop": "sm"
+                  }
+                ],
+                "margin": "sm"
+    }
+    
 
     bubbles = []
 
-    with open("./database/catscan_details.json", "r") as f:
+    # with open("./database/catscan_details.json", "r") as f:
+    #     catscan_details = json.load(f)
+    
+    # brands_detail = catscan_details[brands]
+
+    with open("./database/catscan_db.json", "r") as f:
         catscan_details = json.load(f)
 
-    brands_detail = catscan_details[brands]
+
+    for item in catscan_details:
+      if item["品牌"] == brands:
+          brands_name=brands
+          brands_detail = item["口味"]
+          # print(brands_detail)
+          for i in range(len(brands_detail)):
+              series = brands_detail[i]
+
+              series_name = series["口味"]
+              tag1=series["主食罐/副食罐"]
+              # allergen_c=series["allergen"]  ## 待補
+
+              # AAFCO=series["AAFCO"]  ## 不補
+              me_protein=series["蛋白"]
+              me_fat=series["脂肪"]
+              me_carb=series["碳水"]
+              me_cap=series["鈣磷比"]
+              me_p=series["磷含量"]
+
+              if "照片" in series :
+                  series_img = series["照片"]
+              else:
+                  series_img = "https://i.pinimg.com/564x/bf/e6/10/bfe61075a48dff09c89cf5a6305108fc.jpg"
+
+              if "tag" in series :
+                  tag2 = series["tag"]
+              else:
+                  tag2 = " "
+
+              if "敏感成分" in series :
+                if "是否含膠" in series :
+                    allergen1 = series["敏感成分"]
+                    allergen2 = series["是否含膠"]
+                    allergen = allergen1 + "、" + allergen2
+                else:
+                    allergen1 = series["敏感成分"]
+                    allergen = allergen1
+              else:
+                allergen = " "
+              
+              # 蛋白
+              if me_protein == "50% ↑":
+                  protein_box = protein_box_great
+              elif me_protein == "35~50%":
+                  protein_box = protein_box_good
+              elif me_protein == "不在35~70%內":
+                  protein_box = protein_box_n
+              else:
+                protein_box = protein_box_x
+
+              # 脂肪
+              if me_fat == "50% ↓":
+                  fat_box = fat_box_great
+              elif me_fat == "50~65%":
+                  fat_box = fat_box_good
+              elif me_fat == "不在30~65%內":
+                  fat_box = fat_box_n
+              else:
+                fat_box = fat_box_x  
+
+              # 碳水
+              if me_carb == "10% ↓":
+                  carb_box = carb_box_good
+              elif me_carb == "10% ↑":
+                  carb_box = carb_box_n
+              elif me_carb == "15% ↑":
+                  carb_box = carb_box_warning
+              else:
+                carb_box = carb_box_x        
+
+              # 鈣磷比
+              if me_cap == "1.1~1.6":
+                  cap_box = cap_box_good
+              elif me_cap == "不在1.1~1.6內":
+                  cap_box = cap_box_n
+              else:
+                cap_box = cap_box_x
+              
+              # 磷含量
+              if me_p == "135~250mg/kcal (邁入腎貓)":
+                  p_box = plow_box_b
+              elif me_p == "80~135mg/kcal (腎貓處方)":
+                  p_box = plow_box_a
+              elif me_p == "250mg/kcal ↑":
+                  p_box = plow_box_n
+              elif me_p == "125~350mg/kcal":
+                  p_box = p_box_good
+              elif me_p == "125mg/kcal ↓":
+                  p_box = p_box_n_l
+              elif me_p == "350 mg/kcal ↑":
+                  p_box = p_box_n_h
+              elif me_p == "400mg/kcal ↑":
+                  p_box = p_box_warning
+              else:
+                  p_box = p_box_x 
+
+
+              # # 磷含量
+              # if "tag2" == "低磷罐" :
+              #     if me_p == "135~250mg/kcal (邁入腎貓)":
+              #         p_box = plow_box_b
+              #     elif me_p == "80~135mg/kcal (腎貓處方)":
+              #         p_box = plow_box_a
+              #     elif me_p == "大於250mg/kcal":
+              #         p_box = plow_box_n
+              #     elif me_p == "大於400mg/kcal":
+              #         p_box = p_box_warning
+              # else:
+              #     if me_p == "125~350mg/kcal":
+              #         p_box = p_box_good
+              #     elif me_p == "小於125mg/kcal ":
+              #         p_box = p_box_n_l
+              #     elif me_p == "大於350 mg/kcal":
+              #         p_box = p_box_n_h
+              #     elif me_p == "大於400mg/kcal":
+              #         p_box = p_box_warning
+              #     else:
+              #         p_box == p_box_x 
+
+              bubble = {
+                  "type": "bubble",
+                  "size": "kilo",
+                  "hero": {
+                  "type": "image",
+                  "url": series_img,
+                  "size": "full",
+                  "aspectRatio": "20:13",
+                  "aspectMode": "fit"
+                  },
+                  "body": {
+                  "type": "box",
+                  "layout": "vertical",
+                  "contents": [
+                      {
+                      "type": "text",
+                      "text": brands_name,
+                      "weight": "bold",
+                      "size": "lg",
+                      "color": "#8b7067ff"
+                      },
+                      {
+                      "type": "text",
+                      "text": series_name,
+                      "size": "md",
+                      "color": "#8b7067ff"
+                      },
+                      # {
+                      #     "type": "separator",
+                      #     "margin": "md"
+                      # },
+                      {
+                          "type": "box",
+                          "layout": "horizontal",
+                          "contents": [
+                              {
+                                  "type": "text",
+                                  "text": tag1,
+                                  "color": "#C9B0A7",
+                                  "size": "sm",
+                                  "flex": 1,
+                                  "weight": "bold"
+                              },
+                              {
+                                  "type": "text",
+                                  "text": "-"+tag2,
+                                  "color": "#C9B0A7",
+                                  "size": "sm",
+                                  "flex": 3,
+                                  "weight": "regular"
+                              }
+                          ]
+                      },
+                      ## AAFCO
+                      # {
+                      # "type": "box",
+                      # "layout": "vertical",
+                      # "contents": [
+                      #     {
+                      #     "type": "text",
+                      #     "text": AAFCO_tag,
+                      #     "size": "xxs",
+                      #     "color": "#C9B0A7"
+                      #     }
+                      # ]
+                      # },
+                      {
+                      "type": "separator",
+                      "margin": "md"
+                      },
+                      {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                          {
+                          "type": "text",
+                          "text": "營養成分分析:",
+                          "size": "xxs"
+                          },
+                          protein_box,
+                          fat_box,
+                          carb_box,
+                          cap_box,
+                          p_box
+                      ]
+                      },
+                      {
+                      "type": "separator",
+                      "margin": "md"
+                      },
+                      {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                          {
+                          "type": "text",
+                          "text": "敏感成分分析:",
+                          "size": "xxs"
+                          },
+                          {
+                          "type": "box",
+                          "layout": "baseline",
+                          "contents": [
+                              {
+                              "type": "icon",
+                              "url": "https://www.iconsdb.com/icons/preview/white/warning-28-xxl.png",
+                              "offsetStart": "xs",
+                              "offsetTop": "xs"
+                              },
+                              {
+                              "type": "text",
+                              "color": "#ffffff",
+                              "size": "sm",
+                              "contents": [
+                                  {
+                                  "type": "span",
+                                  "text": allergen
+                                  }
+                              ],
+                              "wrap": True
+                              }
+                          ],
+                          "backgroundColor": "#aaaaaa",
+                          "cornerRadius": "xs",
+                          "position": "relative",
+                          "spacing": "xs",
+                          "margin": "sm"
+                          }
+                      ]
+                      }
+                  ],
+                  "backgroundColor": "#FBF8F5"
+                  },
+                  "styles": {
+                  "hero": {
+                  "backgroundColor": "#FBF8F5"
+                  }
+                  }
+              }
+              bubbles.append(bubble)
+              
+              # print(bubble)
+              print("----------")
+
+          print(len(brands_detail))  
+
 
     for i in range(len(brands_detail)):
-        brands_name=brands
-        brands_img =brands_detail[0]["brands_img"]
+        pass
+        # brands_name=brands
+        # series_img =brands_detail[0]["brands_img"]
         
-        series = brands_detail[i]
-        series_name = series["series_name"]
+        # series = brands_detail[i]
+        # series_name = series["series_name"]
 
-        tag1=series["tag1"]
-        tag2_c=series["tag2"]
-        allergen_c=series["allergen"]
+        # tag1=series["tag1"]
+        # tag2_c=series["tag2"]
+        # allergen_c=series["allergen"]
 
-        AAFCO=series["AAFCO"]
-        me_protein=series["me比_蛋白"]
-        me_fat=series["me比_脂肪"]
-        me_carb=series["me比_碳水"]
-        me_cap=series["me比_鈣磷比"]
-        me_p=series["me比_磷含量"]
+        # AAFCO=series["AAFCO"]
+        # me_protein=series["me比_蛋白"]
+        # me_fat=series["me比_脂肪"]
+        # me_carb=series["me比_碳水"]
+        # me_cap=series["me比_鈣磷比"]
+        # me_p=series["me比_磷含量"]
 
-        # brands_img ="https://www.find.org.tw/attachment/knowledge/22d2de9eeb55b3c417f7cafae7ca2d7e_cover1"
-        # brands_name="好味小姐"
-        # series_name="雞肉"
-        # tag1="主食罐"
-        # tag2="幼母貓罐"
-        # AAFCO_tag="符合 AAFCO 主食罐標準"
-        # allergen="卡拉膠、刺槐豆、決明子"
+        # if tag2_c != "":
+        #     tag2=series["tag2"]
+        # else:
+        #     tag2=" "
 
+        # if allergen_c != "":
+        #     allergen=series["allergen"]
+        # else:
+        #     allergen="無"
         
-        if tag2_c != "":
-            tag2=series["tag2"]
-        else:
-            tag2=" "
-
-        if allergen_c != "":
-            allergen=series["allergen"]
-        else:
-            allergen="無"
-        
-        if AAFCO=="Yes":
-            AAFCO_tag="符合 AAFCO 主食罐標準"
-        else:
-            AAFCO_tag=" "
+        # if AAFCO=="Yes":
+        #     AAFCO_tag="符合 AAFCO 主食罐標準"
+        # else:
+        #     AAFCO_tag=" "
                 
 
-        # 蛋白
-        if me_protein == "50%以上":
-            protein_box = protein_box_great
-        elif me_protein == "35~50%":
-            protein_box = protein_box_good
-        elif me_protein == "不在35-70%內":
-            protein_box = protein_box_n
-        else:
-           protein_box = "x"
+        # # 蛋白
+        # if me_protein == "50%以上":
+        #     protein_box = protein_box_great
+        # elif me_protein == "35~50%":
+        #     protein_box = protein_box_good
+        # elif me_protein == "不在35-70%內":
+        #     protein_box = protein_box_n
+        # else:
+        #    protein_box = "x"
 
-        # 脂肪
-        if me_fat == "50%以下":
-            fat_box = fat_box_great
-        elif me_fat == "50~65%":
-            fat_box = fat_box_good
-        elif me_fat == "不在30-65%內":
-            fat_box = fat_box_n
-        else:
-           fat_box = "x"  
+        # # 脂肪
+        # if me_fat == "50%以下":
+        #     fat_box = fat_box_great
+        # elif me_fat == "50~65%":
+        #     fat_box = fat_box_good
+        # elif me_fat == "不在30-65%內":
+        #     fat_box = fat_box_n
+        # else:
+        #    fat_box = "x"  
 
-        # 碳水
-        if me_carb == "10%以下":
-            carb_box = carb_box_good
-        elif me_carb == "10%以上":
-            carb_box = carb_box_n
-        elif me_carb == "15%以上":
-            carb_box = carb_box_warning
-        else:
-           carb_box = "x"        
+        # # 碳水
+        # if me_carb == "10%以下":
+        #     carb_box = carb_box_good
+        # elif me_carb == "10%以上":
+        #     carb_box = carb_box_n
+        # elif me_carb == "15%以上":
+        #     carb_box = carb_box_warning
+        # else:
+        #    carb_box = "x"        
 
-        # 鈣磷比
-        if me_cap == "1.1~1.6":
-            cap_box = cap_box_good
-        elif me_cap == "不在1.1~1.6內":
-            cap_box = cap_box_n
-        else:
-           cap_box == "x"
+        # # 鈣磷比
+        # if me_cap == "1.1~1.6":
+        #     cap_box = cap_box_good
+        # elif me_cap == "不在1.1~1.6內":
+        #     cap_box = cap_box_n
+        # else:
+        #    cap_box = "x"
         
-        # 磷含量
-        if me_p == "135~250mg/kcal (邁入腎貓)":
-            p_box = plow_box_b
-        elif me_p == "80~135mg/kcal (腎貓處方)":
-            p_box = plow_box_a
-        elif me_p == "大於250mg/kcal":
-            p_box = plow_box_n
-        elif me_p == "125~350mg/kcal":
-            p_box = p_box_good
-        elif me_p == "小於125mg/kcal":
-            p_box = p_box_n_l
-        elif me_p == "大於350mg/kcal":
-            p_box = p_box_n_h
-        elif me_p == "大於400mg/kcal":
-            p_box = p_box_warning
-        else:
-            p_box = "x" 
+        # # 磷含量
+        # if me_p == "135~250mg/kcal (邁入腎貓)":
+        #     p_box = plow_box_b
+        # elif me_p == "80~135mg/kcal (腎貓處方)":
+        #     p_box = plow_box_a
+        # elif me_p == "大於250mg/kcal":
+        #     p_box = plow_box_n
+        # elif me_p == "125~350mg/kcal":
+        #     p_box = p_box_good
+        # elif me_p == "小於125mg/kcal":
+        #     p_box = p_box_n_l
+        # elif me_p == "大於350mg/kcal":
+        #     p_box = p_box_n_h
+        # elif me_p == "大於400mg/kcal":
+        #     p_box = p_box_warning
+        # else:
+        #     p_box = "x" 
 
 
-        # 磷含量
-        if "tag2" == "低磷罐" :
-            if me_p == "135~250mg/kcal (邁入腎貓)":
-                p_box = plow_box_b
-            elif me_p == "80~135mg/kcal (腎貓處方)":
-                p_box = plow_box_a
-            elif me_p == "大於250mg/kcal":
-                p_box = plow_box_n
-            elif me_p == "大於400mg/kcal":
-                p_box = p_box_warning
-        else:
-            if me_p == "125~350mg/kcal":
-                p_box = p_box_good
-            elif me_p == "小於125mg/kcal ":
-                p_box = p_box_n_l
-            elif me_p == "大於350 mg/kcal":
-                p_box = p_box_n_h
-            elif me_p == "大於400mg/kcal":
-                p_box = p_box_warning
-            else:
-                p_box == "x" 
+        # # 磷含量
+        # if "tag2" == "低磷罐" :
+        #     if me_p == "135~250mg/kcal (邁入腎貓)":
+        #         p_box = plow_box_b
+        #     elif me_p == "80~135mg/kcal (腎貓處方)":
+        #         p_box = plow_box_a
+        #     elif me_p == "大於250mg/kcal":
+        #         p_box = plow_box_n
+        #     elif me_p == "大於400mg/kcal":
+        #         p_box = p_box_warning
+        # else:
+        #     if me_p == "125~350mg/kcal":
+        #         p_box = p_box_good
+        #     elif me_p == "小於125mg/kcal ":
+        #         p_box = p_box_n_l
+        #     elif me_p == "大於350 mg/kcal":
+        #         p_box = p_box_n_h
+        #     elif me_p == "大於400mg/kcal":
+        #         p_box = p_box_warning
+        #     else:
+        #         p_box == "x" 
 
-        bubble = {
-            "type": "bubble",
-            "size": "kilo",
-            "hero": {
-            "type": "image",
-            "url": brands_img,
-            "size": "full",
-            "aspectRatio": "20:13",
-            "aspectMode": "fit"
-            },
-            "body": {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
-                {
-                "type": "text",
-                "text": brands_name,
-                "weight": "bold",
-                "size": "lg",
-                "color": "#8b7067ff"
-                },
-                {
-                "type": "text",
-                "text": series_name,
-                "size": "md",
-                "color": "#8b7067ff"
-                },
-                {
-                    "type": "separator",
-                    "margin": "md"
-                },
-                {
-                    "type": "box",
-                    "layout": "horizontal",
-                    "contents": [
-                        {
-                            "type": "text",
-                            "text": tag1,
-                            "color": "#C9B0A7",
-                            "size": "sm",
-                            "flex": 1,
-                            "weight": "bold"
-                        },
-                        {
-                            "type": "text",
-                            "text": "-"+tag2,
-                            "color": "#C9B0A7",
-                            "size": "sm",
-                            "flex": 3,
-                            "weight": "regular"
-                        }
-                    ]
-                },
-                
-                {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                    {
-                    "type": "text",
-                    "text": AAFCO_tag,
-                    "size": "xxs",
-                    "color": "#C9B0A7"
-                    }
-                ]
-                },
-                {
-                "type": "separator",
-                "margin": "md"
-                },
-                {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                    {
-                    "type": "text",
-                    "text": "營養成分分析:",
-                    "size": "xxs"
-                    },
-                    protein_box,
-                    fat_box,
-                    carb_box,
-                    cap_box,
-                    p_box
-                ]
-                },
-                {
-                "type": "separator",
-                "margin": "md"
-                },
-                {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                    {
-                    "type": "text",
-                    "text": "敏感成分分析:",
-                    "size": "xxs"
-                    },
-                    {
-                    "type": "box",
-                    "layout": "baseline",
-                    "contents": [
-                        {
-                        "type": "icon",
-                        "url": "https://www.iconsdb.com/icons/preview/white/warning-28-xxl.png",
-                        "offsetStart": "xs",
-                        "offsetTop": "xs"
-                        },
-                        {
-                        "type": "text",
-                        "color": "#ffffff",
-                        "size": "sm",
-                        "contents": [
-                            {
-                            "type": "span",
-                            "text": allergen
-                            }
-                        ],
-                        "wrap": True
-                        }
-                    ],
-                    "backgroundColor": "#aaaaaa",
-                    "cornerRadius": "xs",
-                    "position": "relative",
-                    "spacing": "xs",
-                    "margin": "sm"
-                    }
-                ]
-                }
-            ],
-            "backgroundColor": "#FBF8F5"
-            },
-            "styles": {
-            "hero": {
-            "backgroundColor": "#FBF8F5"
-            }
-            }
-        }
-        bubbles.append(bubble)
+        # bubble = {
+        #     "type": "bubble",
+        #     "size": "kilo",
+        #     "hero": {
+        #     "type": "image",
+        #     "url": series_img,
+        #     "size": "full",
+        #     "aspectRatio": "20:13",
+        #     "aspectMode": "fit"
+        #     },
+        #     "body": {
+        #     "type": "box",
+        #     "layout": "vertical",
+        #     "contents": [
+        #         {
+        #         "type": "text",
+        #         "text": brands_name,
+        #         "weight": "bold",
+        #         "size": "lg",
+        #         "color": "#8b7067ff"
+        #         },
+        #         {
+        #         "type": "text",
+        #         "text": series_name,
+        #         "size": "md",
+        #         "color": "#8b7067ff"
+        #         },
+        #         # {
+        #         #     "type": "separator",
+        #         #     "margin": "md"
+        #         # },
+        #         {
+        #             "type": "box",
+        #             "layout": "horizontal",
+        #             "contents": [
+        #                 {
+        #                     "type": "text",
+        #                     "text": tag1,
+        #                     "color": "#C9B0A7",
+        #                     "size": "sm",
+        #                     "flex": 1,
+        #                     "weight": "bold"
+        #                 },
+        #                 {
+        #                     "type": "text",
+        #                     "text": "-"+tag2,
+        #                     "color": "#C9B0A7",
+        #                     "size": "sm",
+        #                     "flex": 3,
+        #                     "weight": "regular"
+        #                 }
+        #             ]
+        #         },
+        #         ## AAFCO
+        #         # {
+        #         # "type": "box",
+        #         # "layout": "vertical",
+        #         # "contents": [
+        #         #     {
+        #         #     "type": "text",
+        #         #     "text": AAFCO_tag,
+        #         #     "size": "xxs",
+        #         #     "color": "#C9B0A7"
+        #         #     }
+        #         # ]
+        #         # },
+        #         {
+        #         "type": "separator",
+        #         "margin": "md"
+        #         },
+        #         {
+        #         "type": "box",
+        #         "layout": "vertical",
+        #         "contents": [
+        #             {
+        #             "type": "text",
+        #             "text": "營養成分分析:",
+        #             "size": "xxs"
+        #             },
+        #             protein_box,
+        #             fat_box,
+        #             carb_box,
+        #             cap_box,
+        #             p_box
+        #         ]
+        #         },
+        #         {
+        #         "type": "separator",
+        #         "margin": "md"
+        #         },
+        #         {
+        #         "type": "box",
+        #         "layout": "vertical",
+        #         "contents": [
+        #             {
+        #             "type": "text",
+        #             "text": "敏感成分分析:",
+        #             "size": "xxs"
+        #             },
+        #             {
+        #             "type": "box",
+        #             "layout": "baseline",
+        #             "contents": [
+        #                 {
+        #                 "type": "icon",
+        #                 "url": "https://www.iconsdb.com/icons/preview/white/warning-28-xxl.png",
+        #                 "offsetStart": "xs",
+        #                 "offsetTop": "xs"
+        #                 },
+        #                 {
+        #                 "type": "text",
+        #                 "color": "#ffffff",
+        #                 "size": "sm",
+        #                 "contents": [
+        #                     {
+        #                     "type": "span",
+        #                     "text": allergen
+        #                     }
+        #                 ],
+        #                 "wrap": True
+        #                 }
+        #             ],
+        #             "backgroundColor": "#aaaaaa",
+        #             "cornerRadius": "xs",
+        #             "position": "relative",
+        #             "spacing": "xs",
+        #             "margin": "sm"
+        #             }
+        #         ]
+        #         }
+        #     ],
+        #     "backgroundColor": "#FBF8F5"
+        #     },
+        #     "styles": {
+        #     "hero": {
+        #     "backgroundColor": "#FBF8F5"
+        #     }
+        #     }
+        # }
+        # bubbles.append(bubble)
         
         # print(bubble)
         # print("----------")
 
     # print(brands_name)
     # print(brands_img)
-    print(len(brands_detail))
+    # print(len(brands_detail))
 
 
 
@@ -2172,22 +2674,7 @@ def brandsDetail(brands):
         "contents": bubbles_flex
     }
 
-    # ## 確認 flex 問題
-    # with open("./flex_ck/flex_check.json", "w") as f:
-    #     json.dump(bubbles_flex, f)
-    
-    
     # print(bubbles_flex)
-
-    # with open("./database/catscan_flex.json", "r") as f:
-    #     catscan_flex = json.load(f)
-
-    # message ={
-    #     "type": "flex",
-    #     "altText": brands + "品牌成分分析",
-    #     "contents": catscan_flex
-    # }
-
     return message
 
 

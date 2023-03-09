@@ -7,3 +7,10 @@ test.py
 richmenu.png
 test
 .vscode/settings.json
+test2.py
+database/catscan_db_copy.json
+database/catscan_flex.json
+database/flex_check1.json
+database/flex_chexk2.json
+database/database.py
+database/catscan_db.json
