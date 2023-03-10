@@ -168,9 +168,9 @@ def image_message(message_id, events):
     postback_data = user_record[sent_day][user_id]["postbacks"][-1]["postback_data"]
 
     if postback_data == 'flow=brandLogoClassify':
-        response = classify_rest(img, model,port=8501, ssl=False)
-        # response = "reply brandLogoClassify"
-        brands = "Lady flavor 好味小姐"
+        brands = classify_rest(img, model,port=8501, ssl=False)
+        response = brands
+        # brands = "Lady flavor 好味小姐"
         payload = dict()
         replyToken = events[0]["replyToken"]
         payload["replyToken"] = replyToken 
@@ -250,7 +250,6 @@ def classify_rest(img, model, port=8501, ssl=False):
         labels = f.readlines()
 
     brands = labels[p].replace("\n", "")
-    print(brands)
     return brands if 0 <= p < len(labels) else 'unknown'
 
 ## 選單功能
@@ -2393,7 +2392,7 @@ def brandsDetail(brands):
               bubbles.append(bubble)
               
               # print(bubble)
-              print("----------")
+              # print("----------")
 
           print(len(brands_detail))  
 
